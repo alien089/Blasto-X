@@ -17,12 +17,11 @@ func _ready():
 	asariBoss1 = get_node(asariBossName1)
 	asariBoss2 = get_node(asariBossName2)
 
-	#start()
-	#self.add_child(timer)
-	#timer.connect("timeout", self, "start")
-	#timer.wait_time = delay
-	#timer.one_shot = true
-	#timer.start()
+	self.add_child(timer)
+	timer.connect("timeout", self, "start")
+	timer.wait_time = delay
+	timer.one_shot = true
+	timer.start()
 
 func start():
 	randomize()

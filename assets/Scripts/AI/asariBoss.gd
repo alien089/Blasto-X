@@ -77,6 +77,8 @@ func _process(_delta: float) -> void:
 			STATE.IDLE:
 				if anim_player.current_animation != "idle":
 					anim_player.play("idle")
+				if isAlone:
+					current_state = STATE.SPRINT
 
 			STATE.HIT:
 				anim_player.play("hit")
@@ -114,6 +116,8 @@ func _process(_delta: float) -> void:
 			STATE.FLOATING:
 				if canLand:
 					canLand = false
+					current_state = STATE.LANDING
+				if isAlone:
 					current_state = STATE.LANDING
 
 			STATE.LANDING:
