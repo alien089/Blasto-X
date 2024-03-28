@@ -2,7 +2,7 @@ extends Node
 
 export var asariBossName1 = ""
 export var asariBossName2 = ""
-export(float) var delay = 1.0
+export(float) var delay = 5.0
 
 var asariBoss1: asariBoss
 var asariBoss2: asariBoss
@@ -13,6 +13,7 @@ var asari1Attacked = false
 var asari2Attacked = false
 
 func _ready():
+	randomize()
 	rng = RandomNumberGenerator.new()
 	asariBoss1 = get_node(asariBossName1)
 	asariBoss2 = get_node(asariBossName2)
@@ -24,7 +25,6 @@ func _ready():
 	timer.start()
 
 func start():
-	randomize()
 	var choice = int(rand_range(0, 2))
 	if choice == 0:
 		asariBoss1.current_state = asariBoss1.STATE.JUMP
@@ -34,7 +34,6 @@ func start():
 		asariBoss2.current_state = asariBoss2.STATE.JUMP
 
 func choose_attack():
-	randomize()
 	var choice = int(rand_range(0, 2))
 	if choice == 0:
 		asariBoss1.current_state = asariBoss1.STATE.JUMP
@@ -45,9 +44,7 @@ func choose_attack():
 
 
 func check_boss_attacks():
-	if asari1Attacked && asari2Attacked:
-		asariBoss1.current_state = asariBoss1.STATE.IDLE
-		asariBoss2.current_state = asariBoss2.STATE.IDLE
+	if asari1Attacked && asariBoss1.current_state == asariBoss1.STATE.IDLE && asari2Attacked && asariBoss2.current_state == asariBoss2.STATE.IDLE:
 		choose_attack()
 		asariBoss1.oneTime = false
 		asariBoss2.oneTime = false

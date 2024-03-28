@@ -39,7 +39,6 @@ var paused = false
 var areaCollided = null
 var targetList = null
 var actual_dps = dpsSprint
-var has_sprinted : bool = false
 var direction : Vector2 
 var movement
 
@@ -75,13 +74,37 @@ func _process(_delta: float) -> void:
 
 		match current_state:
 			STATE.IDLE:
+				oneTime == false
 				if anim_player.current_animation != "idle":
 					anim_player.play("idle")
 				if isAlone:
 					current_state = STATE.SPRINT
+					
+			STATE.SPRINT:
+				if oneTime == false:
+					$Pivot/AttackCollision/CollisionShape2D.disabled = false
+					directionPlayer = actual_target.global_position
+					
+					direction = Vector2(directionPlayer - global_position).normalized()
+					attack_setup(dpsSprint, "Sprint")
+					movement = direction * sprint_speed * _delta
+					flip_sprite(directionPlayer)
+					oneTime = true
+				
+				global_position += movement
+				
+				if global_position >= directionPlayer && direction > Vector2(0, 0) || global_position <= directionPlayer && direction < Vector2(0, 0):
+					if isAlone:
+						current_state = STATE.JUMP
+					if !isAlone:
+						emit_signal("attackDone")
+						emit_signal("didSprintAttack")
+						oneTime = false
+						current_state = STATE.IDLE
 
 			STATE.HIT:
 				anim_player.play("hit")
+				emit_signal("didSprintAttack")
 
 			STATE.ATTACK:
 				if near_player && !actual_target.invincible:
@@ -93,12 +116,14 @@ func _process(_delta: float) -> void:
 						emit_signal("didSprintAttack")
 						current_state = STATE.IDLE
 					if isAlone:
+						oneTime = true
 						current_state = STATE.JUMP
 
 			STATE.JUMP:
 				if oneTime == false:
+					didLandingAtk = false
+					$Pivot/AttackCollision/CollisionShape2D.disabled = true
 					attack_setup(0, "Jump")
-					has_sprinted = true
 					targetPos = Vector2(global_position.x, jumpPos.y)
 					collision_shape_body.disabled = true
 					oneTime = true
@@ -122,38 +147,17 @@ func _process(_delta: float) -> void:
 
 			STATE.LANDING:
 				if oneTime == false:
+					oneTime = true
 					attack_setup(dpsLanding, "Falling")
 					targetPos = actual_target.global_position
 					global_position = Vector2(actual_target.global_position.x, global_position.y)
 					
-					oneTime = true
 				move_towards(targetPos, fall_speed)
 
-			STATE.SPRINT:
-				if oneTime == false:
-					directionPlayer = actual_target.global_position
-					
-					direction = Vector2(directionPlayer - global_position).normalized()
-					attack_setup(dpsSprint, "Sprint")
-					movement = direction * sprint_speed * _delta
-					flip_sprite(directionPlayer)
-					oneTime = true
-				
-				global_position += movement
-				
-				if global_position >= directionPlayer && direction > Vector2(0, 0) || global_position <= directionPlayer && direction < Vector2(0, 0):
-					if isAlone:
-						current_state = STATE.JUMP
-					if !isAlone:
-						emit_signal("attackDone")
-						emit_signal("didSprintAttack")
-						oneTime = false
-						current_state = STATE.IDLE
 			
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
-				
 				collition_area2d.disabled = true
 				
 				emit_signal("hasDied")
@@ -240,26 +244,23 @@ func choose_array_numb(array):
 
 
 func _on_FallCollision_area_entered(area): #impact area when landing after falling attack
-	if area.owner.is_in_group("player"):
-		if current_state == STATE.LANDING:
-			didLandingAtk = true
-			attack()
-			set_idle_with_timer()
-			
+	if area.owner.is_in_group("player") && current_state == STATE.LANDING:
+		print("falling attack!!")
+		didLandingAtk = true
+		attack()
+		set_idle_with_timer()
+		
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "hit":
-		oneTime = false
 		current_state = STATE.IDLE
 	
 	if anim_name == "Falling":
-		oneTime = false
+		$Pivot/AttackCollision/CollisionShape2D.disabled = true
+		$Pivot/FallCollision/CollisionShape2D.disabled = false
 		collision_shape_body.disabled = false
 		if didLandingAtk == false:
 			set_idle_with_timer()
-			
-	if anim_name == "attack":
-		oneTime = false
 
 func _on_AttackCollision_area_entered(area):
 	if area.owner.is_in_group("player") && current_state == STATE.SPRINT:
