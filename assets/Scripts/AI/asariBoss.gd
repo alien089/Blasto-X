@@ -46,7 +46,7 @@ var movement
 var targetPos: Vector2
 var oneTime = false
 var jumpPos: Vector2
-var isAlone = true
+var isAlone = false
 
 var rng
 
@@ -77,13 +77,6 @@ func _process(_delta: float) -> void:
 			STATE.IDLE:
 				if anim_player.current_animation != "idle":
 					anim_player.play("idle")
-				if isAlone:
-					randomize()
-					var choice = int(rand_range(0, 2))
-					if choice == 0:
-						current_state = STATE.JUMP
-					else:
-						current_state = STATE.SPRINT
 
 			STATE.HIT:
 				anim_player.play("hit")
@@ -122,8 +115,6 @@ func _process(_delta: float) -> void:
 				if canLand:
 					canLand = false
 					current_state = STATE.LANDING
-				if isAlone:
-					current_state = STATE.LANDING
 
 			STATE.LANDING:
 				if oneTime == false:
@@ -132,18 +123,10 @@ func _process(_delta: float) -> void:
 					global_position = Vector2(actual_target.global_position.x, global_position.y)
 					
 					oneTime = true
-				
 				move_towards(targetPos, fall_speed)
-				
-				if global_position.y >= targetPos.y:
-					if didLandingAtk == false:
-						set_idle_with_timer()
 
 			STATE.SPRINT:
 				if oneTime == false:
-					
-					print("is in sprint")
-					
 					directionPlayer = actual_target.global_position
 					
 					direction = Vector2(directionPlayer - global_position).normalized()
@@ -154,9 +137,9 @@ func _process(_delta: float) -> void:
 				
 				global_position += movement
 				
-				if (global_position >= directionPlayer && direction > Vector2(0, 0)) || (global_position <= directionPlayer && direction < Vector2(0, 0)):
+				if global_position >= directionPlayer && direction > Vector2(0, 0) || global_position <= directionPlayer && direction < Vector2(0, 0):
 					if isAlone:
-						current_state = STATE.IDLE
+						current_state = STATE.JUMP
 					if !isAlone:
 						emit_signal("attackDone")
 						emit_signal("didSprintAttack")
@@ -268,8 +251,8 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Falling":
 		oneTime = false
 		collision_shape_body.disabled = false
-		#if didLandingAtk == false:
-			#set_idle_with_timer()
+		if didLandingAtk == false:
+			set_idle_with_timer()
 			
 	if anim_name == "attack":
 		oneTime = false
