@@ -3,6 +3,9 @@ extends Node
 export var asariBossName1 = ""
 export var asariBossName2 = ""
 export(float) var delay = 5.0
+export(bool) var singleBoss = false
+export(PackedScene) var asariBoss1Alone
+export(PackedScene) var asariBoss2Alone
 
 var asariBoss1: asariBoss
 var asariBoss2: asariBoss
@@ -16,7 +19,8 @@ func _ready():
 	randomize()
 	rng = RandomNumberGenerator.new()
 	asariBoss1 = get_node(asariBossName1)
-	asariBoss2 = get_node(asariBossName2)
+	if singleBoss == false:
+		asariBoss2 = get_node(asariBossName2)
 
 	self.add_child(timer)
 	timer.connect("timeout", self, "start")
@@ -25,64 +29,99 @@ func _ready():
 	timer.start()
 
 func start():
-	var choice = int(rand_range(0, 2))
-	if choice == 0:
-		asariBoss1.current_state = asariBoss1.STATE.JUMP
-		asariBoss2.current_state = asariBoss2.STATE.SPRINT
-	else:
-		asariBoss1.current_state = asariBoss1.STATE.SPRINT
-		asariBoss2.current_state = asariBoss2.STATE.JUMP
+	if check_double_bosses() == false:
+		var choice = int(rand_range(0, 2))
+		if choice == 0:
+			asariBoss1.current_state = asariBoss1.STATE.JUMP
+			asariBoss2.current_state = asariBoss2.STATE.SPRINT
+		else:
+			asariBoss1.current_state = asariBoss1.STATE.SPRINT
+			asariBoss2.current_state = asariBoss2.STATE.JUMP
 
 func choose_attack():
-	var choice = int(rand_range(0, 2))
-	if choice == 0:
-		asariBoss1.current_state = asariBoss1.STATE.JUMP
-		asariBoss2.current_state = asariBoss2.STATE.SPRINT
-	else:
-		asariBoss1.current_state = asariBoss1.STATE.SPRINT
-		asariBoss2.current_state = asariBoss2.STATE.JUMP
-
+	if check_double_bosses() == false:
+		var choice = int(rand_range(0, 2))
+		if choice == 0:
+			asariBoss1.current_state = asariBoss1.STATE.JUMP
+			asariBoss2.current_state = asariBoss2.STATE.SPRINT
+		else:
+			asariBoss1.current_state = asariBoss1.STATE.SPRINT
+			asariBoss2.current_state = asariBoss2.STATE.JUMP
+	
 
 func check_boss_attacks():
-	if asari1Attacked && asariBoss1.current_state == asariBoss1.STATE.IDLE && asari2Attacked && asariBoss2.current_state == asariBoss2.STATE.IDLE:
-		choose_attack()
-		asariBoss1.oneTime = false
-		asariBoss2.oneTime = false
-		asari1Attacked = false
-		asari2Attacked = false
+	if check_double_bosses() == false:
+		if asari1Attacked && asariBoss1.current_state == asariBoss1.STATE.IDLE && asari2Attacked && asariBoss2.current_state == asariBoss2.STATE.IDLE:
+			choose_attack()
+			asariBoss1.oneTime = false
+			asariBoss2.oneTime = false
+			asari1Attacked = false
+			asari2Attacked = false
 
+func check_double_bosses():
+	if get_child_count() == 2:
+		return true
+	else:
+		return false
 
 func _on_asariBoss1_attackDone():
-	asari1Attacked = true
-	check_boss_attacks()
+	if check_double_bosses() == false:
+		asari1Attacked = true
+		check_boss_attacks()
 
 
 func _on_asariBoss2_attackDone():
-	asari2Attacked = true
-	check_boss_attacks()
+	if check_double_bosses() == false:
+		asari2Attacked = true
+		check_boss_attacks()
 
 
 func _on_asariBoss1_chooseMove():
-	choose_attack()
+	if check_double_bosses() == false:
+		choose_attack()
 
 
 func _on_asariBoss2_chooseMove():
-	choose_attack()
+	if check_double_bosses() == false:
+		choose_attack()
 
 
 func _on_asariBoss1_didSprintAttack():
-	asariBoss2.oneTime = false
-	asariBoss2.canLand = true
+	if check_double_bosses() == false:
+		asariBoss2.oneTime = false
+		asariBoss2.canLand = true
 
 
 func _on_asariBoss2_didSprintAttack():
-	asariBoss1.oneTime = false
-	asariBoss1.canLand = true
+	if check_double_bosses() == false:
+		asariBoss1.oneTime = false
+		asariBoss1.canLand = true
 
 
 func _on_asariBoss1_hasDied():
-	asariBoss2.isAlone = true
+	singleBoss = true
+	
+	var tmpAmount = asariBoss1.amount
+	var tmpPos = asariBoss1.global_position
+	
+	asariBoss1.queue_free()
+	var boss_instance = asariBoss1Alone.instance()
+	add_child(boss_instance)
+	boss_instance.healthBar.set_healtbar(boss_instance.HP - tmpAmount)
+	boss_instance.amount = tmpAmount
+	boss_instance.global_position = tmpPos
 
 
 func _on_asariBoss2_hasDied():
-	asariBoss1.isAlone = true
+	singleBoss = true
+	
+	var tmpAmount = asariBoss2.amount
+	var tmpPos = asariBoss2.global_position
+	
+	asariBoss2.queue_free()
+	var boss_instance = asariBoss2Alone.instance()
+	add_child(boss_instance)
+	boss_instance.healthBar.set_healtbar(boss_instance.HP - tmpAmount)
+	boss_instance.amount = tmpAmount
+	boss_instance.global_position = tmpPos
+

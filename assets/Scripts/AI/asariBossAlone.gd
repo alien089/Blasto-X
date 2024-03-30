@@ -92,6 +92,7 @@ func _process(_delta: float) -> void:
 				
 				if global_position >= directionPlayer && direction > Vector2(0, 0) || global_position <= directionPlayer && direction < Vector2(0, 0):
 					current_state = STATE.JUMP
+					oneTime = false
 
 			STATE.HIT:
 				anim_player.play("hit")
@@ -102,7 +103,7 @@ func _process(_delta: float) -> void:
 					anim_player.play("attack")
 					
 				if anim_player.current_animation != "attack":
-					oneTime = true
+					oneTime = false
 					current_state = STATE.JUMP
 
 			STATE.JUMP:
@@ -119,10 +120,7 @@ func _process(_delta: float) -> void:
 				if global_position <= targetPos:
 					oneTime = false
 					current_state = STATE.LANDING
-
-			STATE.FLOATING:
-				current_state = STATE.LANDING
-
+					
 			STATE.LANDING:
 				if oneTime == false:
 					oneTime = true

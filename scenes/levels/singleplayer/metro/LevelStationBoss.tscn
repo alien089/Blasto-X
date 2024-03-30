@@ -1,14 +1,16 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=1]
 [ext_resource path="res://pxArt.png" type="Texture" id=2]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=4]
+[ext_resource path="res://scenes/pg/bosses/Asari/asariBoss1Alone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=6]
 [ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=8]
 [ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=9]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=10]
+[ext_resource path="res://scenes/pg/bosses/Asari/asariBoss2Alone.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=12]
 [ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=13]
 [ext_resource path="res://assets/img/UI/blasto/barra vita.png" type="Texture" id=14]
@@ -19,11 +21,11 @@
 [ext_resource path="res://assets/Scripts/UI/PlayerHealthBar.gd" type="Script" id=19]
 [ext_resource path="res://scenes/pg/bosses/Asari/asariBoss1.tscn" type="PackedScene" id=20]
 [ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=21]
+[ext_resource path="res://scenes/pg/bosses/Asari/asariBoss2.tscn" type="PackedScene" id=22]
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=23]
 [ext_resource path="res://assets/audio/ost/lvls station/The Gun soundtrack.ogg" type="AudioStream" id=24]
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=25]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=27]
-[ext_resource path="res://scenes/pg/bosses/Asari/asariBoss2.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/tile/station/lvl 3 s/station3TileBoss.tscn" type="PackedScene" id=29]
 [ext_resource path="res://assets/Scripts/AI/AsariBossesManager.gd" type="Script" id=30]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=31]
@@ -120,15 +122,14 @@ script = ExtResource( 30 )
 asariBossName1 = "asariBoss1"
 asariBossName2 = "asariBoss2"
 delay = 1.5
+asariBoss1Alone = ExtResource( 5 )
+asariBoss2Alone = ExtResource( 11 )
 
 [node name="asariBoss1" parent="StageManager/EnemiesContainer" instance=ExtResource( 20 )]
-position = Vector2( 811, 803 )
-dpsSprint = 2
-dpsLanding = 3
-HP = 10
+position = Vector2( 824, 798 )
 
-[node name="asariBoss2" parent="StageManager/EnemiesContainer" instance=ExtResource( 28 )]
-position = Vector2( 746, 859 )
+[node name="asariBoss2" parent="StageManager/EnemiesContainer" instance=ExtResource( 22 )]
+position = Vector2( 700, 862 )
 
 [node name="respawnPoint" type="Node2D" parent="StageManager"]
 position = Vector2( 791, 1852 )
@@ -445,6 +446,7 @@ position = Vector2( 0, -126 )
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 31 )]
 position = Vector2( 189, 1422 )
 scale = Vector2( 1, 1 )
+damage = 20
 boss = true
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
@@ -492,49 +494,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 2
+frame = 9
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 9
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 9
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 9
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 9
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 9
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 9
 playing = true
 
 [node name="obj" type="Node" parent="."]
