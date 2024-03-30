@@ -1,9 +1,10 @@
-class_name asariBoss
+class_name asariBossAlone
 extends KinematicBody2D
 
 signal attackDone
 signal didSprintAttack
 signal hasDied
+signal chooseLanding
 signal chooseMove
 
 onready var sprite: Sprite = $Sprite
@@ -47,7 +48,6 @@ var jumpPos: Vector2
 
 var rng
 
-
 var didLandingAtk: bool = false
 var canLand: bool = false
 
@@ -71,9 +71,11 @@ func _process(_delta: float) -> void:
 
 		match current_state:
 			STATE.IDLE:
-				oneTime == false
+				oneTime = false
 				if anim_player.current_animation != "idle":
 					anim_player.play("idle")
+
+				current_state = STATE.SPRINT
 					
 			STATE.SPRINT:
 				if oneTime == false:
@@ -89,10 +91,7 @@ func _process(_delta: float) -> void:
 				global_position += movement
 				
 				if global_position >= directionPlayer && direction > Vector2(0, 0) || global_position <= directionPlayer && direction < Vector2(0, 0):
-					emit_signal("attackDone")
-					emit_signal("didSprintAttack")
-					oneTime = false
-					current_state = STATE.IDLE
+					current_state = STATE.JUMP
 
 			STATE.HIT:
 				anim_player.play("hit")
@@ -103,9 +102,8 @@ func _process(_delta: float) -> void:
 					anim_player.play("attack")
 					
 				if anim_player.current_animation != "attack":
-					emit_signal("attackDone")
-					emit_signal("didSprintAttack")
-					current_state = STATE.IDLE
+					oneTime = true
+					current_state = STATE.JUMP
 
 			STATE.JUMP:
 				if oneTime == false:
@@ -120,12 +118,10 @@ func _process(_delta: float) -> void:
 
 				if global_position <= targetPos:
 					oneTime = false
-					current_state = STATE.FLOATING
+					current_state = STATE.LANDING
 
 			STATE.FLOATING:
-				if canLand:
-					canLand = false
-					current_state = STATE.LANDING
+				current_state = STATE.LANDING
 
 			STATE.LANDING:
 				if oneTime == false:
@@ -250,7 +246,7 @@ func _on_AttackCollision_area_entered(area):
 		near_player = true
 
 func _on_IdleWait_timeout():
-	emit_signal("attackDone")
+	current_state = STATE.SPRINT
 
 func attack_setup(dpsChanged, animationName):
 	actual_dps = dpsChanged

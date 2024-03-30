@@ -1,16 +1,14 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=1]
 [ext_resource path="res://pxArt.png" type="Texture" id=2]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=4]
-[ext_resource path="res://assets/img/UI/bosses/the leg/cornice the leg blu.png" type="Texture" id=5]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=6]
 [ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=8]
 [ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=9]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=10]
-[ext_resource path="res://assets/img/UI/bosses/the leg/barra vita the leg 2.png" type="Texture" id=11]
 [ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=12]
 [ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=13]
 [ext_resource path="res://assets/img/UI/blasto/barra vita.png" type="Texture" id=14]
@@ -19,19 +17,16 @@
 [ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=17]
 [ext_resource path="res://assets/Scripts/Managers/ost.gd" type="Script" id=18]
 [ext_resource path="res://assets/Scripts/UI/PlayerHealthBar.gd" type="Script" id=19]
-[ext_resource path="res://scenes/pg/bosses/asariBoss1.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/pg/bosses/Asari/asariBoss1.tscn" type="PackedScene" id=20]
 [ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=21]
-[ext_resource path="res://assets/Scripts/UI/HealthDisplay.gd" type="Script" id=22]
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=23]
 [ext_resource path="res://assets/audio/ost/lvls station/The Gun soundtrack.ogg" type="AudioStream" id=24]
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=25]
-[ext_resource path="res://assets/img/UI/bosses/the leg/cornice the leg rossa.png" type="Texture" id=26]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=27]
-[ext_resource path="res://scenes/pg/bosses/asariBoss2.tscn" type="PackedScene" id=28]
+[ext_resource path="res://scenes/pg/bosses/Asari/asariBoss2.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/tile/station/lvl 3 s/station3TileBoss.tscn" type="PackedScene" id=29]
 [ext_resource path="res://assets/Scripts/AI/AsariBossesManager.gd" type="Script" id=30]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=31]
-[ext_resource path="res://assets/img/UI/bosses/the leg/barra vita the leg 1.png" type="Texture" id=32]
 
 [sub_resource type="StyleBoxFlat" id=41]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -127,18 +122,13 @@ asariBossName2 = "asariBoss2"
 delay = 1.5
 
 [node name="asariBoss1" parent="StageManager/EnemiesContainer" instance=ExtResource( 20 )]
-position = Vector2( 800.71, 786 )
+position = Vector2( 811, 803 )
 dpsSprint = 2
 dpsLanding = 3
 HP = 10
-HealthBarName = "GUI/UI/HealthBossContainer1"
 
 [node name="asariBoss2" parent="StageManager/EnemiesContainer" instance=ExtResource( 28 )]
-position = Vector2( 750, 899 )
-dpsSprint = 2
-dpsLanding = 3
-HP = 10
-HealthBarName = "GUI/UI/HealthBossContainer2"
+position = Vector2( 746, 859 )
 
 [node name="respawnPoint" type="Node2D" parent="StageManager"]
 position = Vector2( 791, 1852 )
@@ -200,44 +190,6 @@ rect_scale = Vector2( 0.293, 0.296 )
 max_value = 10.0
 value = 10.0
 texture_progress = ExtResource( 14 )
-
-[node name="HealthBossContainer1" type="Node2D" parent="GUI/UI"]
-position = Vector2( 2520, 968 )
-script = ExtResource( 22 )
-
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthBossContainer1"]
-margin_left = -1229.47
-margin_top = -4.0
-margin_right = -649.471
-margin_bottom = 55.0
-max_value = 10.0
-value = 10.0
-texture_progress = ExtResource( 32 )
-nine_patch_stretch = true
-
-[node name="TheLeg1" type="Sprite" parent="GUI/UI/HealthBossContainer1"]
-position = Vector2( -939.471, 20 )
-scale = Vector2( 0.383589, 0.343705 )
-texture = ExtResource( 5 )
-
-[node name="HealthBossContainer2" type="Node2D" parent="GUI/UI"]
-position = Vector2( 1424, 970 )
-script = ExtResource( 22 )
-
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthBossContainer2"]
-margin_left = -801.0
-margin_top = -4.0
-margin_right = -221.0
-margin_bottom = 55.0
-max_value = 10.0
-value = 10.0
-texture_progress = ExtResource( 11 )
-nine_patch_stretch = true
-
-[node name="TheLeg2" type="Sprite" parent="GUI/UI/HealthBossContainer2"]
-position = Vector2( -511, 20 )
-scale = Vector2( 0.383589, 0.343705 )
-texture = ExtResource( 26 )
 
 [node name="Rating" type="Control" parent="GUI/UI"]
 margin_left = 1764.0
@@ -540,49 +492,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="obj" type="Node" parent="."]
@@ -626,12 +578,10 @@ position = Vector2( 862, 936 )
 position = Vector2( 857, 837 )
 
 [connection signal="attackDone" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_attackDone"]
-[connection signal="chooseLanding" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_chooseLanding"]
 [connection signal="chooseMove" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_chooseMove"]
 [connection signal="didSprintAttack" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_didSprintAttack"]
 [connection signal="hasDied" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_hasDied"]
 [connection signal="attackDone" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_attackDone"]
-[connection signal="chooseLanding" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_chooseLanding"]
 [connection signal="chooseMove" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_chooseMove"]
 [connection signal="didSprintAttack" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_didSprintAttack"]
 [connection signal="hasDied" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_hasDied"]

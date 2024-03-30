@@ -93,6 +93,11 @@ _global_script_classes=[ {
 "class": "asariBoss",
 "language": "GDScript",
 "path": "res://assets/Scripts/AI/asariBoss.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "asariBossAlone",
+"language": "GDScript",
+"path": "res://assets/Scripts/AI/asariBossAlone.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
@@ -111,7 +116,8 @@ _global_script_class_icons={
 "TurianWeapon": "",
 "VineGun": "",
 "VineSpear": "",
-"asariBoss": ""
+"asariBoss": "",
+"asariBossAlone": ""
 }
 
 [application]
