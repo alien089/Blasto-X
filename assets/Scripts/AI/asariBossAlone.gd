@@ -1,11 +1,7 @@
 class_name asariBossAlone
 extends KinematicBody2D
 
-signal attackDone
-signal didSprintAttack
 signal hasDied
-signal chooseLanding
-signal chooseMove
 
 onready var sprite: Sprite = $Sprite
 onready var pivot: Node2D = $Pivot
@@ -96,7 +92,6 @@ func _process(_delta: float) -> void:
 
 			STATE.HIT:
 				anim_player.play("hit")
-				emit_signal("didSprintAttack")
 
 			STATE.ATTACK:
 				if near_player && !actual_target.invincible:
@@ -119,14 +114,18 @@ func _process(_delta: float) -> void:
 
 				if global_position <= targetPos:
 					oneTime = false
-					current_state = STATE.LANDING
+					current_state = STATE.FLOATING
 					
+			
+			STATE.FLOATING:
+				current_state = STATE.LANDING
+			
 			STATE.LANDING:
 				if oneTime == false:
-					oneTime = true
 					attack_setup(dpsLanding, "Falling")
 					targetPos = actual_target.global_position
 					global_position = Vector2(actual_target.global_position.x, global_position.y)
+					oneTime = true
 					
 				move_towards(targetPos, fall_speed)
 
@@ -136,7 +135,6 @@ func _process(_delta: float) -> void:
 				collision_shape.disabled = true
 				collition_area2d.disabled = true
 				
-				emit_signal("hasDied")
 				anim_player.play("died")
 				
 				var directionDead = Vector2((global_position.x - actual_target.position.x), 0).normalized()

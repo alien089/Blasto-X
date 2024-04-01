@@ -116,6 +116,7 @@ func _on_asariBoss2_hasDied():
 	var tmpAmount = asariBoss1.amount
 	var tmpPos = asariBoss1.global_position
 	var tmpTargets = asariBoss1.targetList
+	var tmpState = asariBoss1.current_state
 	
 	asariBoss1.queue_free()
 	var boss_instance = asariBoss1Alone.instance()
@@ -124,3 +125,6 @@ func _on_asariBoss2_hasDied():
 	boss_instance.amount = tmpAmount
 	boss_instance.global_position = tmpPos
 	boss_instance.targetList = tmpTargets
+	
+	if tmpState == boss_instance.STATE.JUMP || tmpState == boss_instance.STATE.FLOATING:
+		boss_instance.current_state = boss_instance.STATE.LANDING
