@@ -99,24 +99,9 @@ func _on_asariBoss2_didSprintAttack():
 
 
 func _on_asariBoss1_hasDied():
-	singleBoss = true
-	
-	var tmpAmount = asariBoss1.amount
-	var tmpPos = asariBoss1.global_position
-	
-	asariBoss1.queue_free()
-	var boss_instance = asariBoss1Alone.instance()
-	add_child(boss_instance)
-	boss_instance.healthBar.set_healtbar(boss_instance.HP - tmpAmount)
-	boss_instance.amount = tmpAmount
-	boss_instance.global_position = tmpPos
-
-
-func _on_asariBoss2_hasDied():
-	singleBoss = true
-	
 	var tmpAmount = asariBoss2.amount
 	var tmpPos = asariBoss2.global_position
+	var tmpTargets = asariBoss2.targetList
 	
 	asariBoss2.queue_free()
 	var boss_instance = asariBoss2Alone.instance()
@@ -124,4 +109,18 @@ func _on_asariBoss2_hasDied():
 	boss_instance.healthBar.set_healtbar(boss_instance.HP - tmpAmount)
 	boss_instance.amount = tmpAmount
 	boss_instance.global_position = tmpPos
+	boss_instance.targetList = tmpTargets
+	
 
+func _on_asariBoss2_hasDied():
+	var tmpAmount = asariBoss1.amount
+	var tmpPos = asariBoss1.global_position
+	var tmpTargets = asariBoss1.targetList
+	
+	asariBoss1.queue_free()
+	var boss_instance = asariBoss1Alone.instance()
+	add_child(boss_instance)
+	boss_instance.healthBar.set_healtbar(boss_instance.HP - tmpAmount)
+	boss_instance.amount = tmpAmount
+	boss_instance.global_position = tmpPos
+	boss_instance.targetList = tmpTargets

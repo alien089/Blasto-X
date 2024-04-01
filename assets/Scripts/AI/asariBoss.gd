@@ -142,7 +142,6 @@ func _process(_delta: float) -> void:
 				collision_shape.disabled = true
 				collition_area2d.disabled = true
 				
-				emit_signal("hasDied")
 				anim_player.play("died")
 				
 				var directionDead = Vector2((global_position.x - actual_target.position.x), 0).normalized()
@@ -213,6 +212,7 @@ func attack():
 
 
 func death():
+	emit_signal("hasDied")
 	queue_free()
 
 
