@@ -101,7 +101,6 @@ func _on_asariBoss2_didSprintAttack():
 func _on_asariBoss1_hasDied():
 	var tmpAmount = asariBoss2.amount
 	var tmpPos = asariBoss2.global_position
-	var tmpTargets = asariBoss2.targetList
 	var tmpState = asariBoss2.current_state
 	
 	asariBoss2.queue_free()
@@ -110,7 +109,8 @@ func _on_asariBoss1_hasDied():
 	boss_instance.healthBar.set_healtbar(boss_instance.HP - tmpAmount)
 	boss_instance.amount = tmpAmount
 	boss_instance.global_position = tmpPos
-	boss_instance.targetList = tmpTargets
+	var tmptargetList = get_parent().players
+	boss_instance.targetList = tmptargetList
 	
 	if tmpState == boss_instance.STATE.FLOATING:
 		boss_instance.current_state = boss_instance.STATE.LANDING
@@ -119,7 +119,6 @@ func _on_asariBoss1_hasDied():
 func _on_asariBoss2_hasDied():
 	var tmpAmount = asariBoss1.amount
 	var tmpPos = asariBoss1.global_position
-	var tmpTargets = asariBoss1.targetList
 	var tmpState = asariBoss1.current_state
 	
 	asariBoss1.queue_free()
@@ -128,7 +127,8 @@ func _on_asariBoss2_hasDied():
 	boss_instance.healthBar.set_healtbar(boss_instance.HP - tmpAmount)
 	boss_instance.amount = tmpAmount
 	boss_instance.global_position = tmpPos
-	boss_instance.targetList = tmpTargets
+	var tmptargetList = get_parent().players
+	boss_instance.targetList = tmptargetList
 	
 	if tmpState == boss_instance.STATE.FLOATING:
 		boss_instance.current_state = boss_instance.STATE.LANDING

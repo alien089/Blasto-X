@@ -70,8 +70,9 @@ func _process(_delta: float) -> void:
 				oneTime = false
 				if anim_player.current_animation != "idle":
 					anim_player.play("idle")
-
-				current_state = STATE.SPRINT
+				
+				if idle_wait_timer.time_left == 0:
+					current_state = STATE.SPRINT
 					
 			STATE.SPRINT:
 				if oneTime == false:
@@ -125,7 +126,13 @@ func _process(_delta: float) -> void:
 					oneTime = true
 					
 				move_towards(targetPos, fall_speed)
-
+				
+				if global_position.y >= targetPos.y:
+					$Pivot/AttackCollision/CollisionShape2D.disabled = true
+					$Pivot/FallCollision/CollisionShape2D.disabled = false
+					collision_shape_body.disabled = false
+					if didLandingAtk == false:
+						set_idle_with_timer()
 			
 			STATE.DIED:
 				collision_shape_body.disabled = true
@@ -139,7 +146,7 @@ func _process(_delta: float) -> void:
 				move_and_slide(directionDead * death_speed)
 				
 		
-		$HealthDisplay/Label.text = str(targetPos.y).pad_decimals(2) #STATE.keys()[current_state]
+		$HealthDisplay/Label.text = STATE.keys()[current_state]
 	else:
 		anim_player.stop()
 
@@ -226,12 +233,6 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "hit":
 		current_state = STATE.IDLE
 	
-	if anim_name == "Falling":
-		$Pivot/AttackCollision/CollisionShape2D.disabled = true
-		$Pivot/FallCollision/CollisionShape2D.disabled = false
-		collision_shape_body.disabled = false
-		if didLandingAtk == false:
-			set_idle_with_timer()
 
 func _on_AttackCollision_area_entered(area):
 	if area.owner.is_in_group("player") && current_state == STATE.SPRINT:

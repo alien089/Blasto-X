@@ -202,7 +202,7 @@ extents = Vector2( 8.4275, 21.8633 )
 extents = Vector2( 49.0033, 25 )
 
 [sub_resource type="CapsuleShape2D" id=16]
-radius = 26.9998
+radius = 8.99992
 height = 46.0
 
 [node name="asariBoss" type="KinematicBody2D" groups=["enemy", "pausable"]]
@@ -277,10 +277,10 @@ scale = Vector2( 0.600001, 1 )
 shape = SubResource( 8 )
 
 [node name="FallCollision" type="Area2D" parent="Pivot"]
+position = Vector2( 1, 23 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/FallCollision"]
-position = Vector2( 0, 60 )
 rotation = 1.5708
 shape = SubResource( 16 )
 

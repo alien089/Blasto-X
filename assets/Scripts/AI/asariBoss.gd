@@ -136,7 +136,13 @@ func _process(_delta: float) -> void:
 					
 				move_towards(targetPos, fall_speed)
 
-			
+				if global_position >= targetPos:
+					$Pivot/AttackCollision/CollisionShape2D.disabled = true
+					$Pivot/FallCollision/CollisionShape2D.disabled = false
+					collision_shape_body.disabled = false
+					if didLandingAtk == false:
+						set_idle_with_timer()
+
 			STATE.DIED:
 				collision_shape_body.disabled = true
 				collision_shape.disabled = true
@@ -236,13 +242,6 @@ func _on_FallCollision_area_entered(area): #impact area when landing after falli
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "hit":
 		current_state = STATE.IDLE
-	
-	if anim_name == "Falling":
-		$Pivot/AttackCollision/CollisionShape2D.disabled = true
-		$Pivot/FallCollision/CollisionShape2D.disabled = false
-		collision_shape_body.disabled = false
-		if didLandingAtk == false:
-			set_idle_with_timer()
 
 func _on_AttackCollision_area_entered(area):
 	if area.owner.is_in_group("player") && current_state == STATE.SPRINT:
