@@ -293,7 +293,6 @@ max_value = 3.0
 value = 3.0
 
 [node name="Label" type="Label" parent="HealthDisplay"]
-visible = false
 margin_left = -20.1815
 margin_top = -77.7829
 margin_right = 19.8185

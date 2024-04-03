@@ -114,11 +114,8 @@ func _process(_delta: float) -> void:
 
 				if global_position <= targetPos:
 					oneTime = false
-					current_state = STATE.FLOATING
+					current_state = STATE.LANDING
 					
-			
-			STATE.FLOATING:
-				current_state = STATE.LANDING
 			
 			STATE.LANDING:
 				if oneTime == false:
@@ -142,7 +139,7 @@ func _process(_delta: float) -> void:
 				move_and_slide(directionDead * death_speed)
 				
 		
-		$HealthDisplay/Label.text = STATE.keys()[current_state]
+		$HealthDisplay/Label.text = str(targetPos.y).pad_decimals(2) #STATE.keys()[current_state]
 	else:
 		anim_player.stop()
 

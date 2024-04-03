@@ -144,9 +144,9 @@ func _process(_delta: float) -> void:
 				
 				anim_player.play("died")
 				
-				var directionDead = Vector2((global_position.x - actual_target.position.x), 0).normalized()
+				#var directionDead = Vector2((global_position.x - actual_target.position.x), 0).normalized()
 				
-				move_and_slide(directionDead * death_speed)
+				#move_and_slide(directionDead * death_speed)
 				
 		
 		$HealthDisplay/Label.text = STATE.keys()[current_state]
