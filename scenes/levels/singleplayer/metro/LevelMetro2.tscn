@@ -137,19 +137,7 @@ position = Vector2( 60, 1414.7 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="3" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 1729.8, 1977.7 )
-scale = Vector2( 0.58, 0.57 )
-
-[node name="4" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 60, 2500.7 )
-scale = Vector2( 0.58, 0.57 )
-
-[node name="5" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 1729.8, 3067.4 )
-scale = Vector2( 0.58, 0.57 )
-
-[node name="6" type="Position2D" parent="StageManager/Positions"]
-position = Vector2( 60, 3585.4 )
+position = Vector2( 1729.8, 1978.7 )
 scale = Vector2( 0.58, 0.57 )
 
 [node name="EnemiesSpawn" type="Node" parent="StageManager"]

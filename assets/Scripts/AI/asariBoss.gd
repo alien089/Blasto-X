@@ -214,7 +214,7 @@ func flip_sprite(target: Vector2):
 
 
 func attack():
-	actual_target.hit(actual_dps, self)
+	actual_target.hit(actual_dps, "melee", self)
 
 
 func death():

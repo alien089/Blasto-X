@@ -240,7 +240,7 @@ func _process(_delta: float) -> void:
 				move_and_slide(directionDead * death_speed)
 
 
-		$HealthDisplay/Label.text = STATE.keys()[current_state]
+		#$HealthDisplay/Label.text = STATE.keys()[current_state]
 	else:
 		anim_player.stop()
 
@@ -297,7 +297,7 @@ func flip_sprite(target: Vector2):
 
 
 func attack():
-	actual_target.hit(actual_dps, self)
+	actual_target.hit(actual_dps, "melee", self)
 
 
 func death():

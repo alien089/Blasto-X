@@ -577,7 +577,6 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 1
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
