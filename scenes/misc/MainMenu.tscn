@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/Scripts/UI/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/Scripts/Managers/ost.gd" type="Script" id=2]
-[ext_resource path="res://assets/audio/ost/main menu theme.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/ost/main_menu_team.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/img/mainMenuBackground.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=7]

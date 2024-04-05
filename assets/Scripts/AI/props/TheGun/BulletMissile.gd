@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 func _on_BulletArea_body_entered(body:Node):
 	if body.is_in_group(target):
 		var enemy = body as Player
-		enemy.hit(damage, self)
+		enemy.hit(damage, "melee", self)
 		$BulletArea.monitorable = false
 		queue_free()
 		

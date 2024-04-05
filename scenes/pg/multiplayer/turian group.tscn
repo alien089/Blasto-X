@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/pg/multiplayer/turian.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Enemy" parent="." instance=ExtResource( 1 )]
+position = Vector2( -63, 0 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 56, 0 )

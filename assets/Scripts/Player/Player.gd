@@ -100,7 +100,6 @@ func _process(_delta: float) -> void:
 					current_state = STATE.ATTACK1
 					actualAttackType = 1
 					canAttack1 = false
-
 				if Input.is_action_just_pressed(inputManager[5]) && canAttack2 == true:
 					current_state = STATE.ATTACK2
 					actualAttackType = 2
@@ -217,7 +216,7 @@ func _get_direction() -> Vector2:
 	return input_direction
 	
 
-func hit(dps, source):
+func hit(dps, type, source):
 	if current_state != STATE.DIED:
 		if invincible == false:
 			if !boss:

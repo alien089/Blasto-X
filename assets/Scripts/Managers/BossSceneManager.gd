@@ -50,7 +50,7 @@ func _process(_delta: float) -> void:
 			member.pause()
 	
 	if Input.is_action_pressed("ui_accept") && game_over.visible == true:
-		get_tree().change_scene("res://scenes/levels/" + current_level + ".tscn")
+		get_tree().change_scene("res://scenes/levels/" + Global.dirType  + current_level + ".tscn")
 		
 	
 	if Input.is_action_pressed("ui_accept") && win.visible == true:

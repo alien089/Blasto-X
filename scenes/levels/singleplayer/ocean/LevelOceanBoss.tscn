@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://assets/img/sprites/obj/booble.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls sub/The Vine soundtrack.ogg" type="AudioStream" id=2]
@@ -13,20 +13,18 @@
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
 [ext_resource path="res://assets/img/UI/bosses/the vine/the vine cornice destra.png" type="Texture" id=13]
-[ext_resource path="res://scenes/tile/ocean/lvl 3 s/ocean3Tile1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/tile/ocean/lvl 3 s/ocean3TileBoss.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=15]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=16]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=17]
 [ext_resource path="res://assets/img/UI/bosses/the vine/barra vita the vine.png" type="Texture" id=18]
 [ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=19]
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=20]
-[ext_resource path="res://scenes/tile/ocean/lvl 3 s/ocean3Tile3.tscn" type="PackedScene" id=21]
 [ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=22]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
 [ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=25]
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=26]
-[ext_resource path="res://scenes/tile/ocean/lvl 3 s/ocean3Tile2.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/Scripts/UI/HealthDisplay.gd" type="Script" id=29]
 [ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=30]
 
@@ -396,9 +394,6 @@ position = Vector2( 438, 420 )
 [node name="1" type="Position2D" parent="StageManager/gunZones/3"]
 position = Vector2( -38, -60 )
 
-[node name="2" type="Position2D" parent="StageManager/gunZones/3"]
-position = Vector2( -13, -20 )
-
 [node name="3" type="Position2D" parent="StageManager/gunZones/3"]
 position = Vector2( 14, 16 )
 
@@ -430,7 +425,7 @@ position = Vector2( -13, -20 )
 position = Vector2( 14, 16 )
 
 [node name="6" type="Node2D" parent="StageManager/gunZones"]
-position = Vector2( 624, 420 )
+position = Vector2( 624, 418 )
 
 [node name="1" type="Position2D" parent="StageManager/gunZones/6"]
 position = Vector2( -38, -60 )
@@ -777,7 +772,7 @@ z_index = -2
 script = ExtResource( 11 )
 increment = 1350
 n_positions = 1
-scenes = [ ExtResource( 14 ), ExtResource( 27 ), ExtResource( 21 ) ]
+scenes = [ ExtResource( 14 ) ]
 
 [node name="PlayersList" type="Node2D" parent="."]
 
@@ -807,7 +802,7 @@ texture = ExtResource( 3 )
 position = Vector2( 131, 219 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 4
+frame = 10
 speed_scale = 1.8
 playing = true
 
@@ -815,7 +810,7 @@ playing = true
 position = Vector2( 663, 224 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 4
+frame = 10
 speed_scale = 1.8
 playing = true
 
@@ -823,7 +818,7 @@ playing = true
 position = Vector2( 1157, 165 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 3
+frame = 9
 speed_scale = 1.8
 playing = true
 
@@ -831,7 +826,7 @@ playing = true
 position = Vector2( 998, 284 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 2
+frame = 8
 speed_scale = 1.8
 playing = true
 
@@ -839,7 +834,7 @@ playing = true
 position = Vector2( 456, 144 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 2
+frame = 8
 speed_scale = 1.8
 playing = true
 
@@ -847,7 +842,7 @@ playing = true
 position = Vector2( 297, 278 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 1
+frame = 7
 speed_scale = 1.8
 playing = true
 
@@ -855,6 +850,7 @@ playing = true
 position = Vector2( 1361, 401 )
 frames = SubResource( 56 )
 animation = "New Anim"
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -862,6 +858,7 @@ playing = true
 position = Vector2( 1508, 258 )
 frames = SubResource( 56 )
 animation = "New Anim"
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -869,6 +866,7 @@ playing = true
 position = Vector2( 759, 538 )
 frames = SubResource( 56 )
 animation = "New Anim"
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -876,7 +874,7 @@ playing = true
 position = Vector2( 1601, 514 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 14
+frame = 5
 speed_scale = 1.8
 playing = true
 
@@ -884,7 +882,7 @@ playing = true
 position = Vector2( 369, 646 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 14
+frame = 5
 speed_scale = 1.8
 playing = true
 
@@ -892,7 +890,7 @@ playing = true
 position = Vector2( 63, 532 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 13
+frame = 4
 speed_scale = 1.8
 playing = true
 
@@ -900,7 +898,7 @@ playing = true
 position = Vector2( 1046, 637 )
 frames = SubResource( 56 )
 animation = "New Anim"
-frame = 13
+frame = 4
 speed_scale = 1.8
 playing = true
 

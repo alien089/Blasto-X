@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/audio/sfx/Bosses/TheVine_SFX/Boss_Salarian_Liana_Growth.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheVine_SFX/boss_salarian_liana_growth.ogg" type="AudioStream" id=1]
 [ext_resource path="res://assets/Scripts/AI/props/TheVine/Vine Spear.gd" type="Script" id=2]
 [ext_resource path="res://assets/img/sprites/enemy/bosses/obj/the vine/liana_down.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/sprites/VFX/crackedFloorVFX.png" type="Texture" id=4]

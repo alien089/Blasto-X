@@ -1,14 +1,15 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/img/sprites/Player/Cerulean_Star_spritesheet.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/sfx/Player/Ceru_SFX/Ceru_Death.wav" type="AudioStream" id=2]
-[ext_resource path="res://assets/audio/sfx/Player/Ceru_SFX/Ceru_Pain.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/audio/sfx/Player/Carnifex_SFX/Carnifex 01.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx/Player/Ceru_SFX/cerulean_death.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/sfx/Player/Ceru_SFX/cerulean_pain.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sfx/Player/Carnifex_SFX/carnifex_02.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/Scripts/Player/Player.gd" type="Script" id=5]
-[ext_resource path="res://assets/audio/sfx/Player/Ceru_SFX/Ceru_Attack.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/Player/Ceru_SFX/cerulean_attack.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/img/sprites/VFX/playerRangedHittedVFX.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/sprites/VFX/playerMeleeHittedVFX.png" type="Texture" id=8]
-[ext_resource path="res://assets/audio/sfx/Player/Punches_SFX/Punch 2.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/sfx/Player/Punches_SFX/punch_02.ogg" type="AudioStream" id=9]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack1"

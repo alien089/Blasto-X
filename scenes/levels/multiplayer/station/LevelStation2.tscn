@@ -1,7 +1,7 @@
 [gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://scenes/tile/station/lvl 2 s/station2Tile1.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/audio/ost/lvls station/lvl 2-s.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/ost/lvls station/lvl 2-station.ogg" type="AudioStream" id=2]
 [ext_resource path="res://scenes/tile/station/lvl 2 s/station2Tile2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/UI/go.png" type="Texture" id=5]
@@ -32,6 +32,7 @@
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=35]
 [ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=36]
 [ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=37]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 89.7126, 98.8925 )

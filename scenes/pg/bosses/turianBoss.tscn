@@ -1,18 +1,19 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/Turian_Boss_Pain.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/boss_turian_pain.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/Scripts/AI/turianBoss.gd" type="Script" id=3]
 [ext_resource path="res://assets/Scripts/AI/props/TheGun/Missile.gd" type="Script" id=4]
 [ext_resource path="res://assets/Scripts/AI/props/TheGun/Rifle.gd" type="Script" id=5]
 [ext_resource path="res://assets/Scripts/AI/props/TheGun/Grenade.gd" type="Script" id=6]
-[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/Turian_Boss_Death.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/boss_turian_death.ogg" type="AudioStream" id=7]
 [ext_resource path="res://scenes/pg/bosses/props/TheGun/BulletRifle.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/pg/bosses/props/TheGun/BulletGranade.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/pg/bosses/props/TheGun/BulletMissile.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/Turian_Rocket_Fire.mp3" type="AudioStream" id=11]
-[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/Turian_Boss_Rifle.wav" type="AudioStream" id=12]
-[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/Turian_Granade_Fire.mp3" type="AudioStream" id=13]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/boss_turian_rocket_fire.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/boss_turian_rifle.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheGun_SFX/boss_turian_granade_fire.ogg" type="AudioStream" id=13]
 [ext_resource path="res://assets/img/sprites/enemy/bosses/the_gun_spritesheet.png" type="Texture" id=14]
+
 
 [sub_resource type="Animation" id=2]
 resource_name = "died"
