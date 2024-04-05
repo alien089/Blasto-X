@@ -113,7 +113,9 @@ func _on_asariBoss1_hasDied():
 	boss_instance.targetList = tmptargetList
 	
 	if tmpState == boss_instance.STATE.FLOATING:
-		boss_instance.current_state = boss_instance.STATE.LANDING
+		boss_instance.next_state = boss_instance.STATE.JUMP_FALL
+	
+	remove_child(timer)
 	
 
 func _on_asariBoss2_hasDied():
@@ -131,4 +133,6 @@ func _on_asariBoss2_hasDied():
 	boss_instance.targetList = tmptargetList
 	
 	if tmpState == boss_instance.STATE.FLOATING:
-		boss_instance.current_state = boss_instance.STATE.LANDING
+		boss_instance.next_state = boss_instance.STATE.JUMP_FALL
+
+	remove_child(timer)

@@ -20,7 +20,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8, 0.9 ),
+"times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 8, 7, 6 ]
@@ -199,7 +199,7 @@ radius = 17.0
 extents = Vector2( 8.4275, 21.8633 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 49.0033, 25 )
+extents = Vector2( 49.0033, 7.5 )
 
 [sub_resource type="CapsuleShape2D" id=16]
 radius = 8.99992
@@ -221,7 +221,7 @@ texture = ExtResource( 1 )
 flip_h = true
 hframes = 3
 vframes = 6
-frame = 9
+frame = 8
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -267,17 +267,17 @@ monitoring = false
 shape = SubResource( 14 )
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
-position = Vector2( 12.3744, 0 )
+position = Vector2( 48, 0 )
 collision_layer = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
-position = Vector2( 39.0276, -1 )
+position = Vector2( 0, -1.5 )
 scale = Vector2( 0.600001, 1 )
 shape = SubResource( 8 )
 
 [node name="FallCollision" type="Area2D" parent="Pivot"]
-position = Vector2( 1, 23 )
+position = Vector2( 0, 13 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/FallCollision"]

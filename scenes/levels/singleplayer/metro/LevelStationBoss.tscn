@@ -446,7 +446,6 @@ position = Vector2( 0, -126 )
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 31 )]
 position = Vector2( 189, 1422 )
 scale = Vector2( 1, 1 )
-damage = 20
 boss = true
 
 [node name="ost" type="AudioStreamPlayer" parent="." groups=["pausable"]]
@@ -494,57 +493,64 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 8
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 8
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 8
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 8
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 8
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 8
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 8
 playing = true
 
 [node name="obj" type="Node" parent="."]
 
+[node name="LandingPoints" type="Node" parent="."]
+
+[node name="LandingPoint1" type="Node2D" parent="LandingPoints"]
+position = Vector2( 68, 934 )
+
+[node name="LandingPoint2" type="Node2D" parent="LandingPoints"]
+position = Vector2( 63, 837 )
+
+[node name="LandingPoint3" type="Node2D" parent="LandingPoints"]
+position = Vector2( 862, 936 )
+
+[node name="LandingPoint4" type="Node2D" parent="LandingPoints"]
+position = Vector2( 857, 837 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 337, 1499 )
+position = Vector2( 329, 1208 )
 current = true
-zoom = Vector2( 0.5, 1.363 )
+zoom = Vector2( 0.5, 0.5 )
 limit_left = 0
 limit_top = 379
 limit_bottom = 1020
@@ -564,20 +570,6 @@ __meta__ = {
 script = ExtResource( 17 )
 boss = true
 randomShackeStrenght = 10.0
-
-[node name="LandingPoints" type="Node" parent="."]
-
-[node name="LandingPoint1" type="Node2D" parent="LandingPoints"]
-position = Vector2( 68, 934 )
-
-[node name="LandingPoint2" type="Node2D" parent="LandingPoints"]
-position = Vector2( 63, 837 )
-
-[node name="LandingPoint3" type="Node2D" parent="LandingPoints"]
-position = Vector2( 862, 936 )
-
-[node name="LandingPoint4" type="Node2D" parent="LandingPoints"]
-position = Vector2( 857, 837 )
 
 [connection signal="attackDone" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_attackDone"]
 [connection signal="chooseMove" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_chooseMove"]

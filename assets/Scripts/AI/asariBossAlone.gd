@@ -46,6 +46,7 @@ var rng
 
 var didLandingAtk: bool = false
 var canLand: bool = false
+var timerEnded: bool = false
 
 var sceneManager = null
 
@@ -62,10 +63,10 @@ func _ready():
 	healthBar = UIHealthBar
 	
 	sceneManager = get_parent().get_parent()
-
+	idle_wait_timer.connect("timeout", self, "timer_ended")
 	#acquisizione posizione fissa di destinazione del jump
 	jumpPos = jump_position2D.global_position
-	
+	$Pivot/FallCollision/CollisionShape2D.disabled = true
 	set_idle_with_timer()
 
 func _process(_delta: float) -> void:
@@ -83,34 +84,32 @@ func _process(_delta: float) -> void:
 		# la prima assegnazione è a next_state
 		current_state = next_state
 
-		if HP <= 0:
-			current_state = STATE.DIED
 
 		if received_hit:
 			current_state = STATE.HIT
 
+		if amount >= HP:
+			current_state = STATE.DIED
 
 		# successivamente se uno dei flag degli altri eventi è settato, faccio gli altri check in 
 		#   ordine prioritario inverso, dal meno al più prioritario quindi. Es. la morte del boss 
 		#   sovrascrive tutti gli eventi.
 
 		match current_state:
-
 			STATE.IDLE:
-				if anim_player.current_animation != "idle":
-					anim_player.play("idle")
-
 				# prima run non ripreparo lo sprint ma corro direttamente
-				if idle_wait_timer.time_left == 0:
+				if timerEnded == true:
 					next_state = STATE.START_SPRINT
 				else:
 					next_state = STATE.IDLE
 
 
 			STATE.PREPARE_SPRINT:
-				if idle_wait_timer.time_left == 0:
+				if timerEnded == true:
 					next_state = STATE.START_SPRINT
 				else:
+					if anim_player.current_animation != "idle":
+						anim_player.play("idle")
 					next_state = STATE.PREPARE_SPRINT
 
 
@@ -128,8 +127,7 @@ func _process(_delta: float) -> void:
 				movement = direction * sprint_speed * _delta
 				flip_sprite(directionPlayer)
 				next_state = STATE.RUNNING
-
-
+			
 			STATE.RUNNING:
 				#movimento by frame
 				global_position += movement
@@ -140,14 +138,13 @@ func _process(_delta: float) -> void:
 				# @alien occhio, qua puoi definire la priorità. se tocco il player contemporaneamente alla posizione
 				#   salto o attacco? Con l'implementazione attuale attacco; invertendo i due if sotto invece salto.
 
+				# se tocco il player, attacco
+				if near_player:
+					next_state = STATE.ATTACK
+
 				# se arrivo alla posizione del player ma questi non c'è salto
 				if global_position >= directionPlayer && direction > Vector2(0, 0) || global_position <= directionPlayer && direction < Vector2(0, 0):
 					next_state = STATE.JUMP
-
-				# se tocco il player, attacco
-				if near_player:
-					next_state = STATE.PREPARE_ATTACK
-				
 
 			STATE.HIT:
 				received_hit = false # reset pre-animazione
@@ -156,9 +153,9 @@ func _process(_delta: float) -> void:
 			
 			STATE.DO_HIT:
 				if hit_anim_done:
-					set_idle_with_timer()
 					hit_anim_done = false
-					next_state = STATE.PREPARE_SPRINT
+					set_idle_with_timer()
+					next_state = STATE.JUMP
 				else:
 					next_state = STATE.DO_HIT
 
@@ -167,21 +164,22 @@ func _process(_delta: float) -> void:
 				didLandingAtk = false
 
 				#disabilito le collision (in scena è presente un collider soffitto da oltrepassare durante il salto)
+				$Pivot/FallCollision/CollisionShape2D.disabled = true
 				$Pivot/AttackCollision/CollisionShape2D.disabled = true
 				#setto i valori di attacco attuale
 				attack_setup(0, "Jump")
 				#calcolo la posizione da raggiungere con il salto, una posizione in linea d'aria sopra di me ad altezza predeterminata
-				targetPos = Vector2(global_position.x, jumpPos.y)
+				targetPos = Vector2(global_position.x, jumpPos.y + 700)
 				collision_shape_body.disabled = true
 
 				#se l'animazione è nel frame di salto effettivo mi muovo
-				if sprite.frame == 8:
-					move_towards(targetPos, jump_speed)
-
+				
 				next_state = STATE.JUMP_ASCENDING
 				
 
 			STATE.JUMP_ASCENDING:
+				if sprite.frame == 8:
+					move_towards(targetPos, jump_speed)
 				#se ho raggiunto l'altitudine prevista passo in landing/discesa
 				if global_position <= targetPos:
 					oneTime = false
@@ -201,30 +199,22 @@ func _process(_delta: float) -> void:
 			STATE.LANDING:
 				#scendo
 				move_towards(targetPos, fall_speed)
-
+				sprite.frame = 8
+				$Pivot/FallCollision/CollisionShape2D.disabled = false
+				
 				#se arrivo alla posizione prevista riattivo le mie collisioni e 
-				if global_position.y >= targetPos.y:
+				if global_position >= targetPos:
+					anim_player.play("Falling")
 					$Pivot/AttackCollision/CollisionShape2D.disabled = true
-					$Pivot/FallCollision/CollisionShape2D.disabled = false
 					collision_shape_body.disabled = false
 
+					if didLandingAtk:
+						attack()
 					#se non ho attacco entro in idle e attendo il timer
 					set_idle_with_timer()
-					next_state = STATE.PREPARE_ATTACK
-					
-
-
-			STATE.PREPARE_ATTACK:
-				if idle_wait_timer.time_left == 0:
-					next_state = STATE.ATTACK
-				else:
-					next_state = STATE.PREPARE_ATTACK
-
+					next_state = STATE.IDLE
 
 			STATE.ATTACK:
-				# TODO: @tambatoe Raffinare lo stato di attack, verificare le funzioni esterne
-				#   che coinvolgono l'attacco per conflitti nella sincronizzazione
-
 				#se il player è vicino e non in stato già di hitted, attacco
 				if near_player && !actual_target.invincible:
 					anim_player.play("attack")
@@ -233,7 +223,6 @@ func _process(_delta: float) -> void:
 				
 				#finito l'attacco salto
 				if anim_player.current_animation != "attack":
-					oneTime = false
 					next_state = STATE.JUMP
 				else:
 					next_state = STATE.ATTACK
@@ -251,7 +240,7 @@ func _process(_delta: float) -> void:
 				move_and_slide(directionDead * death_speed)
 
 
-		#$HealthDisplay/Label.text = STATE.keys()[current_state]
+		$HealthDisplay/Label.text = STATE.keys()[current_state]
 	else:
 		anim_player.stop()
 
@@ -326,18 +315,14 @@ func choose_array_numb(array):
 
 func _on_FallCollision_area_entered(area): #collider posizionato alla mia base
 	#se collido con il player e sono in landing
-	if area.owner.is_in_group("player") && current_state == STATE.LANDING:
+	if area.owner.is_in_group("player"):
 		print("falling attack!!")
 		#segno che ho attaccato
 		didLandingAtk = true
 		#attacco, entro in idle e aspetto il timer
-		attack()
-		set_idle_with_timer()
-		# TODO @tambatoe verificare bene la logica di tocco, dovrebbe mancare qualcosa
 		
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void: #evento chiamato alla fine di ogni animazione
-	
 	# se l'animazione è hit passa in idle
 	if anim_name == "hit":
 		hit_anim_done = true
@@ -346,10 +331,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void: #evento 
 
 func _on_AttackCollision_area_entered(area): #collider posizionato alla mia destra
 	#se collido con il player e sono in sprint
-	if area.owner.is_in_group("player") && current_state == STATE.SPRINT:
-		# passo in attacco
-		# current_state = STATE.ATTACK
-		# segno di essere vicino al player
+	if area.owner.is_in_group("player"):
 		near_player = true
 	else:
 		near_player = false
@@ -362,8 +344,11 @@ func attack_setup(dpsChanged, animationName):
 	actual_dps = dpsChanged
 	anim_player.play(animationName)
 
+func timer_ended():
+	timerEnded = true
 
 func set_idle_with_timer():
+	timerEnded = false
 	idle_wait_timer.stop()
 	idle_wait_timer.wait_time = wait_time_attack
 	idle_wait_timer.start()
