@@ -10,7 +10,7 @@ export var current_level = ""
 
 onready var sound = get_parent().get_node("ost")
 onready var playersParent = get_parent().get_node("PlayersList")
-onready var boss = get_node("EnemiesContainer").get_child(0)
+onready var bossParent = get_node("EnemiesContainer")
 onready var game_over: Sprite = get_parent().get_node("GUI/UI/GAME OVER")
 onready var win = get_parent().get_node("GUI/UI/WIN")
 onready var menu = get_parent().get_node("GUI/menu")
@@ -18,24 +18,30 @@ onready var respawnPoint = get_node("respawnPoint")
 
 var menuShowed = false
 var players
+var bosses: Array
 var isMultiplayer = false
 
 func _ready():
 	players = playersParent.get_children()
+	for i in bossParent.get_child_count() - 1:
+		bosses.append(bossParent.get_child(i))
 
 	if playersParent.get_child_count() == 2:
 		isMultiplayer = true
 
-	boss.targetList = players
+	for boss in bosses:
+		boss.targetList = players
+	
 
 func _process(_delta: float) -> void:
 	
 	players = playersParent.get_children()
 
-	if is_instance_valid(boss):
-		boss.targetList = players
-		
-		checkPlayersDead()
+	for boss in bosses:
+		if is_instance_valid(boss):
+			boss.targetList = players
+			
+			checkPlayersDead()
 		
 	if $EnemiesContainer.get_child_count() == 0:
 		win.visible = true

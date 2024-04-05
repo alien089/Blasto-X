@@ -1,16 +1,16 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=1]
 [ext_resource path="res://pxArt.png" type="Texture" id=2]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=4]
-[ext_resource path="res://assets/img/UI/bosses/the gun/the gun cornice destra.png" type="Texture" id=5]
+[ext_resource path="res://scenes/pg/bosses/Asari/asariBoss1Alone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=6]
 [ext_resource path="res://assets/img/UI/rating/S.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=8]
-[ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=9]
+[ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=9]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=10]
-[ext_resource path="res://assets/img/UI/bosses/the gun/barra vita the gun.png" type="Texture" id=11]
+[ext_resource path="res://scenes/pg/bosses/Asari/asariBoss2Alone.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/img/UI/rating/B.png" type="Texture" id=12]
 [ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=13]
 [ext_resource path="res://assets/img/UI/blasto/barra vita.png" type="Texture" id=14]
@@ -19,17 +19,15 @@
 [ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=17]
 [ext_resource path="res://assets/Scripts/Managers/ost.gd" type="Script" id=18]
 [ext_resource path="res://assets/Scripts/UI/PlayerHealthBar.gd" type="Script" id=19]
-[ext_resource path="res://scenes/pg/bosses/props/TheGun/GranadeImpact.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/pg/bosses/Asari/asariBoss1.tscn" type="PackedScene" id=20]
 [ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=21]
-[ext_resource path="res://assets/Scripts/UI/HealthDisplay.gd" type="Script" id=22]
+[ext_resource path="res://scenes/pg/bosses/Asari/asariBoss2.tscn" type="PackedScene" id=22]
 [ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=23]
 [ext_resource path="res://assets/audio/ost/lvls station/The Gun soundtrack.ogg" type="AudioStream" id=24]
 [ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=25]
-[ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=26]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=27]
-[ext_resource path="res://scenes/pg/bosses/turianBoss.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/tile/station/lvl 3 s/station3TileBoss.tscn" type="PackedScene" id=29]
-[ext_resource path="res://assets/img/frontground/obj/LV2-S OBJ.png" type="Texture" id=30]
+[ext_resource path="res://assets/Scripts/AI/AsariBossesManager.gd" type="Script" id=30]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=31]
 
 [sub_resource type="StyleBoxFlat" id=41]
@@ -109,9 +107,6 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=43]
-extents = Vector2( 54.1429, 41.2791 )
-
 [node name="testing" type="Node2D"]
 position = Vector2( 63, -456 )
 __meta__ = {
@@ -120,48 +115,24 @@ __meta__ = {
 
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
-script = ExtResource( 26 )
-next_stage = "defeat gun"
-current_level = "station/LevelStationBoss"
+script = ExtResource( 9 )
 
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
+script = ExtResource( 30 )
+asariBossName1 = "asariBoss1"
+asariBossName2 = "asariBoss2"
+delay = 1.5
+asariBoss1Alone = ExtResource( 5 )
+asariBoss2Alone = ExtResource( 11 )
 
-[node name="TurianBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 28 )]
-position = Vector2( 817, 867 )
-HP = 20
-shoot_delay = 3.0
+[node name="asariBoss1" parent="StageManager/EnemiesContainer" instance=ExtResource( 20 )]
+position = Vector2( 805, 797 )
+
+[node name="asariBoss2" parent="StageManager/EnemiesContainer" instance=ExtResource( 22 )]
+position = Vector2( 700, 862 )
 
 [node name="respawnPoint" type="Node2D" parent="StageManager"]
 position = Vector2( 791, 1852 )
-
-[node name="impactZones" type="Node" parent="StageManager"]
-
-[node name="ImpactZone" parent="StageManager/impactZones" instance=ExtResource( 20 )]
-position = Vector2( 223, 850 )
-
-[node name="ImpactZone2" parent="StageManager/impactZones" instance=ExtResource( 20 )]
-position = Vector2( 64, 879 )
-
-[node name="ImpactZone3" parent="StageManager/impactZones" instance=ExtResource( 20 )]
-position = Vector2( 240, 909 )
-
-[node name="ImpactZone4" parent="StageManager/impactZones" instance=ExtResource( 20 )]
-position = Vector2( 126, 936 )
-
-[node name="ImpactZone5" parent="StageManager/impactZones" instance=ExtResource( 20 )]
-position = Vector2( 50, 990 )
-
-[node name="ImpactZone6" parent="StageManager/impactZones" instance=ExtResource( 20 )]
-position = Vector2( 266, 962 )
-
-[node name="ImpactZone7" parent="StageManager/impactZones" instance=ExtResource( 20 )]
-position = Vector2( 186, 996 )
-
-[node name="ImpactZone8" parent="StageManager/impactZones" instance=ExtResource( 20 )]
-position = Vector2( 320, 1002 )
-
-[node name="ImpactZone9" parent="StageManager/impactZones" instance=ExtResource( 20 )]
-position = Vector2( 106, 836 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -220,25 +191,6 @@ rect_scale = Vector2( 0.293, 0.296 )
 max_value = 10.0
 value = 10.0
 texture_progress = ExtResource( 14 )
-
-[node name="HealthBossContainer" type="Node2D" parent="GUI/UI"]
-position = Vector2( 1926, 968 )
-script = ExtResource( 22 )
-
-[node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthBossContainer"]
-margin_left = -1085.0
-margin_top = -26.0
-margin_right = -89.0
-margin_bottom = 60.0
-max_value = 20.0
-value = 20.0
-texture_progress = ExtResource( 11 )
-nine_patch_stretch = true
-
-[node name="TheJaw" type="Sprite" parent="GUI/UI/HealthBossContainer"]
-position = Vector2( -581.76, 20.7754 )
-scale = Vector2( 0.664756, 0.595638 )
-texture = ExtResource( 5 )
 
 [node name="Rating" type="Control" parent="GUI/UI"]
 margin_left = 1764.0
@@ -492,7 +444,7 @@ scenes = [ ExtResource( 29 ) ]
 position = Vector2( 0, -126 )
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 31 )]
-position = Vector2( 44, 1360 )
+position = Vector2( 189, 1422 )
 scale = Vector2( 1, 1 )
 boss = true
 
@@ -541,52 +493,59 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 9
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 9
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 9
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 9
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 9
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 9
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 9
 playing = true
 
 [node name="obj" type="Node" parent="."]
+
+[node name="LandingPoints" type="Node" parent="."]
+
+[node name="LandingPoint1" type="Node2D" parent="LandingPoints"]
+position = Vector2( 68, 934 )
+
+[node name="LandingPoint2" type="Node2D" parent="LandingPoints"]
+position = Vector2( 63, 837 )
+
+[node name="LandingPoint3" type="Node2D" parent="LandingPoints"]
+position = Vector2( 862, 936 )
+
+[node name="LandingPoint4" type="Node2D" parent="LandingPoints"]
+position = Vector2( 857, 837 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 329, 1208 )
@@ -612,325 +571,14 @@ script = ExtResource( 17 )
 boss = true
 randomShackeStrenght = 10.0
 
-[node name="Node" type="Node2D" parent="."]
-visible = false
-position = Vector2( -98, 455 )
-
-[node name="Lv1-DObj2" type="Sprite" parent="Node"]
-position = Vector2( 431, 821 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj2/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj11" type="Sprite" parent="Node"]
-position = Vector2( 386, 784 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj11"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj11/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj6" type="Sprite" parent="Node"]
-position = Vector2( 431, 821 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj6/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj3" type="Sprite" parent="Node"]
-position = Vector2( 578, 809 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj3/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj4" type="Sprite" parent="Node"]
-position = Vector2( 635, 844 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj4/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj5" type="Sprite" parent="Node"]
-position = Vector2( 514, 832 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj5/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj7" type="Sprite" parent="Node"]
-position = Vector2( 553, 865 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj7/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj8" type="Sprite" parent="Node"]
-position = Vector2( 618, 885 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj8/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj9" type="Sprite" parent="Node"]
-position = Vector2( 402, 858 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj9/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj10" type="Sprite" parent="Node"]
-position = Vector2( 468, 879 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj10"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj10/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj22" type="Sprite" parent="Node"]
-position = Vector2( 411, 880 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj22"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj22/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj12" type="Sprite" parent="Node"]
-position = Vector2( 544, 909 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj12"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj12/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj13" type="Sprite" parent="Node"]
-position = Vector2( 666, 922 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj13"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj13/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj15" type="Sprite" parent="Node"]
-position = Vector2( 612, 930 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj15"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj15/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj16" type="Sprite" parent="Node"]
-position = Vector2( 674, 969 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj16"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj16/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj17" type="Sprite" parent="Node"]
-position = Vector2( 470, 935 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj17"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj17/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj18" type="Sprite" parent="Node"]
-position = Vector2( 542, 942 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj18"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj18/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj20" type="Sprite" parent="Node"]
-position = Vector2( 568, 977 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj20"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj20/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv1-DObj21" type="Sprite" parent="Node"]
-position = Vector2( 486, 981 )
-scale = Vector2( 0.71, 1 )
-z_index = -1
-texture = ExtResource( 9 )
-hframes = 3
-vframes = 5
-frame = 9
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj21"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj21/StaticBody2D"]
-position = Vector2( 1.85715, 0.232544 )
-shape = SubResource( 43 )
-
-[node name="Lv2-SObj" type="Sprite" parent="."]
-position = Vector2( 580, 1287 )
-texture = ExtResource( 30 )
-hframes = 3
-vframes = 3
-frame = 5
-
-[node name="Lv2-SObj2" type="Sprite" parent="."]
-position = Vector2( 820, 1282 )
-z_index = -2
-texture = ExtResource( 30 )
-hframes = 3
-vframes = 3
-frame = 5
-
-[node name="Lv2-SObj3" type="Sprite" parent="."]
-position = Vector2( 714, 1317 )
-z_index = -1
-texture = ExtResource( 30 )
-hframes = 3
-vframes = 3
-frame = 5
-
-[node name="Lv2-SObj4" type="Sprite" parent="."]
-position = Vector2( 865, 1373 )
-texture = ExtResource( 30 )
-hframes = 3
-vframes = 3
-frame = 5
-
+[connection signal="attackDone" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_attackDone"]
+[connection signal="chooseMove" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_chooseMove"]
+[connection signal="didSprintAttack" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_didSprintAttack"]
+[connection signal="hasDied" from="StageManager/EnemiesContainer/asariBoss1" to="StageManager/EnemiesContainer" method="_on_asariBoss1_hasDied"]
+[connection signal="attackDone" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_attackDone"]
+[connection signal="chooseMove" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_chooseMove"]
+[connection signal="didSprintAttack" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_didSprintAttack"]
+[connection signal="hasDied" from="StageManager/EnemiesContainer/asariBoss2" to="StageManager/EnemiesContainer" method="_on_asariBoss2_hasDied"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/RestartLevelBtn" to="GUI/pauseMenu" method="_on_RestartLevelBtn_pressed"]

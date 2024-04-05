@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://assets/img/background/sea/sea3.png" type="Texture" id=1]
 [ext_resource path="res://assets/audio/ost/lvls sub/lvl 3-a.ogg" type="AudioStream" id=2]
@@ -30,8 +30,6 @@
 [ext_resource path="res://assets/img/UI/cerulean star/cerulean star cornice vita.png" type="Texture" id=28]
 [ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=29]
 [ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=30]
-[ext_resource path="res://assets/img/UI/commands.png" type="Texture" id=31]
-[ext_resource path="res://assets/Scripts/Player/Commands.gd" type="Script" id=32]
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=33]
 [ext_resource path="res://assets/img/UI/rating/C.png" type="Texture" id=34]
 [ext_resource path="res://assets/img/UI/rating/A.png" type="Texture" id=35]
@@ -177,9 +175,6 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 27.7187, 2.01658 )
-
-[sub_resource type="RectangleShape2D" id=33]
-extents = Vector2( 10, 136.5 )
 
 [node name="testing" type="Node2D"]
 position = Vector2( 63, -456 )
@@ -594,7 +589,6 @@ visible = false
 position = Vector2( 1480, 512 )
 scale = Vector2( 0.815703, 0.801639 )
 frames = SubResource( 32 )
-frame = 2
 playing = true
 
 [node name="LifesList" type="Node2D" parent="GUI/UI"]
@@ -931,7 +925,7 @@ texture = ExtResource( 1 )
 position = Vector2( 131, 2.00002 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 2
+frame = 12
 speed_scale = 1.8
 playing = true
 
@@ -939,7 +933,7 @@ playing = true
 position = Vector2( 663, 224 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 2
+frame = 12
 speed_scale = 1.8
 playing = true
 
@@ -947,7 +941,7 @@ playing = true
 position = Vector2( 1157, -52 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 1
+frame = 11
 speed_scale = 1.8
 playing = true
 
@@ -955,6 +949,7 @@ playing = true
 position = Vector2( 998, 284 )
 frames = SubResource( 51 )
 animation = "New Anim"
+frame = 10
 speed_scale = 1.8
 playing = true
 
@@ -962,6 +957,7 @@ playing = true
 position = Vector2( 456, -73 )
 frames = SubResource( 51 )
 animation = "New Anim"
+frame = 10
 speed_scale = 1.8
 playing = true
 
@@ -969,7 +965,7 @@ playing = true
 position = Vector2( 297, 278 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 14
+frame = 9
 speed_scale = 1.8
 playing = true
 
@@ -977,7 +973,7 @@ playing = true
 position = Vector2( 1361, 401 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 13
+frame = 8
 speed_scale = 1.8
 playing = true
 
@@ -985,7 +981,7 @@ playing = true
 position = Vector2( 1508, 41 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 13
+frame = 8
 speed_scale = 1.8
 playing = true
 
@@ -993,7 +989,7 @@ playing = true
 position = Vector2( 759, 538 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 13
+frame = 8
 speed_scale = 1.8
 playing = true
 
@@ -1001,7 +997,7 @@ playing = true
 position = Vector2( 1601, 514 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 12
+frame = 7
 speed_scale = 1.8
 playing = true
 
@@ -1009,7 +1005,7 @@ playing = true
 position = Vector2( 369, 646 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 12
+frame = 7
 speed_scale = 1.8
 playing = true
 
@@ -1017,7 +1013,7 @@ playing = true
 position = Vector2( 63, 532 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 11
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -1025,7 +1021,7 @@ playing = true
 position = Vector2( 1046, 637 )
 frames = SubResource( 51 )
 animation = "New Anim"
-frame = 11
+frame = 6
 speed_scale = 1.8
 playing = true
 
@@ -1436,18 +1432,6 @@ __meta__ = {
 [node name="shake" type="Node2D" parent="Camera2D"]
 script = ExtResource( 29 )
 
-[node name="Commands" type="Sprite" parent="."]
-position = Vector2( 372, 1126 )
-texture = ExtResource( 31 )
-script = ExtResource( 32 )
-
-[node name="StaticBody2D" type="Area2D" parent="Commands"]
-position = Vector2( 126, 178 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Commands/StaticBody2D"]
-position = Vector2( -4, 14.5 )
-shape = SubResource( 33 )
-
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Ceru/HealthBar" to="PlayersList/Ceru Star" method="_on_HealthBar_value_changed"]
 [connection signal="pressed" from="GUI/pauseMenu/mainPauseMenu/ReturnBtn" to="GUI/pauseMenu" method="_on_ReturnBtn_pressed"]
@@ -1463,4 +1447,3 @@ shape = SubResource( 33 )
 [connection signal="update_healthbar" from="PlayersList/Blasto" to="GUI/UI/HealthPlayerContainer" method="_on_Blasto_update_healthbar"]
 [connection signal="death" from="PlayersList/Ceru Star" to="StageManager" method="_on_Cerulean_Star_death"]
 [connection signal="update_healthbar" from="PlayersList/Ceru Star" to="GUI/UI/HealthPlayerContainer" method="_on_Ceru_Star_update_healthbar"]
-[connection signal="area_entered" from="Commands/StaticBody2D" to="Commands" method="_on_StaticBody2D_area_entered"]

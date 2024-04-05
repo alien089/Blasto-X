@@ -88,6 +88,16 @@ _global_script_classes=[ {
 "class": "VineSpear",
 "language": "GDScript",
 "path": "res://assets/Scripts/AI/props/TheVine/Vine Spear.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "asariBoss",
+"language": "GDScript",
+"path": "res://assets/Scripts/AI/asariBoss.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "asariBossAlone",
+"language": "GDScript",
+"path": "res://assets/Scripts/AI/asariBossAlone.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
@@ -105,7 +115,9 @@ _global_script_class_icons={
 "TurianBoss": "",
 "TurianWeapon": "",
 "VineGun": "",
-"VineSpear": ""
+"VineSpear": "",
+"asariBoss": "",
+"asariBossAlone": ""
 }
 
 [application]
@@ -332,6 +344,11 @@ menu={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ksSecret={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":75,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

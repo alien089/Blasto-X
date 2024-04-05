@@ -1,33 +1,30 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=41 format=2]
 
-[ext_resource path="res://assets/img/sprites/obj/wind.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/ost/lvls desert/The Jaw soundtrack.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/img/background/desert/Desert1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/tile/station/lvl 3 s/station3TileBoss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/audio/ost/lvls station/The Gun soundtrack.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/img/UI/cerulean star/icona numero vite.png" type="Texture" id=3]
 [ext_resource path="res://assets/Scripts/UI/OptionMenu.gd" type="Script" id=4]
 [ext_resource path="res://assets/Scripts/Player/camera/CameraShake.gd" type="Script" id=5]
 [ext_resource path="res://scenes/pg/Blasto.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/img/UI/blasto/barra vita.png" type="Texture" id=7]
 [ext_resource path="res://assets/Scripts/Managers/ost.gd" type="Script" id=8]
 [ext_resource path="res://assets/Scripts/UI/PlayerHealthBar.gd" type="Script" id=9]
-[ext_resource path="res://scenes/pg/bosses/kroganBoss.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/pg/bosses/turianBoss.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/Scripts/FloorCreator.gd" type="Script" id=11]
 [ext_resource path="res://assets/img/UI/blasto/cornice barra vita.png" type="Texture" id=12]
-[ext_resource path="res://assets/img/UI/cerulean star/icona numero vite.png" type="Texture" id=13]
-[ext_resource path="res://scenes/tile/desert/lvl 3 d/desert3Tile2.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/tile/desert/lvl 3 d/desert3Tile1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/img/UI/bosses/the gun/the gun cornice destra.png" type="Texture" id=13]
+[ext_resource path="res://scenes/pg/bosses/props/TheGun/GranadeImpact.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/img/frontground/obj/LV2-S OBJ.png" type="Texture" id=15]
 [ext_resource path="res://assets/img/UI/you win cornice.png" type="Texture" id=16]
 [ext_resource path="res://assets/img/UI/blasto/icona numero vite.png" type="Texture" id=17]
-[ext_resource path="res://assets/img/UI/bosses/the jaw/barra vita the jaw balanced.png" type="Texture" id=18]
+[ext_resource path="res://assets/img/UI/bosses/the gun/barra vita the gun multiplayer.png" type="Texture" id=18]
 [ext_resource path="res://assets/Scripts/Managers/BossSceneManager.gd" type="Script" id=19]
-[ext_resource path="res://pxArt.png" type="Texture" id=20]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=21]
 [ext_resource path="res://assets/img/UI/cerulean star/cerulean star cornice vita.png" type="Texture" id=22]
 [ext_resource path="res://assets/img/UI/game over cornice.png" type="Texture" id=23]
 [ext_resource path="res://assets/fonts/MainMenuFont.tres" type="DynamicFont" id=24]
-[ext_resource path="res://assets/img/UI/bosses/the jaw/the jaw cornice destra balanced.png" type="Texture" id=25]
 [ext_resource path="res://assets/img/UI/cerulean star/cerulean star barra vita.png" type="Texture" id=26]
 [ext_resource path="res://scenes/pg/Cerulean Star.tscn" type="PackedScene" id=27]
-[ext_resource path="res://assets/Scripts/Environment/DestroyObj.gd" type="Script" id=28]
 [ext_resource path="res://assets/Scripts/UI/HealthDisplay.gd" type="Script" id=29]
 [ext_resource path="res://assets/Scripts/Player/camera/cameraController.gd" type="Script" id=30]
 [ext_resource path="res://assets/Scripts/UI/Rating.gd" type="Script" id=31]
@@ -61,63 +58,11 @@ extents = Vector2( 15748, 123.529 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 1990.15, 120.176 )
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 1 )
-region = Rect2( 199, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 1 )
-region = Rect2( 398, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 1 )
-region = Rect2( 597, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 1 )
-region = Rect2( 796, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 1 )
-region = Rect2( 995, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 1 )
-region = Rect2( 1194, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 1 )
-region = Rect2( 1393, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 1 )
-region = Rect2( 1592, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 1 )
-region = Rect2( 1791, 0, 199, 114 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 1 )
-region = Rect2( 1990, 0, 199, 114 )
-
-[sub_resource type="SpriteFrames" id=39]
-animations = [ {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "default",
-"speed": 12.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=40]
-extents = Vector2( 27.7187, 2.01658 )
+[sub_resource type="RectangleShape2D" id=43]
+extents = Vector2( 54.1429, 41.2791 )
 
 [node name="testing" type="Node2D"]
-position = Vector2( 63, -456 )
+position = Vector2( 1618, -489 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 1020.87 ]
 }
@@ -125,23 +70,47 @@ __meta__ = {
 [node name="StageManager" type="Node2D" parent="."]
 position = Vector2( -680, -496 )
 script = ExtResource( 19 )
-next_stage = "defeat jaw"
-current_level = "desert/LevelDesertBoss"
+next_stage = "defeat gun"
+current_level = "station/LevelStationBoss"
 
 [node name="EnemiesContainer" type="Node" parent="StageManager"]
 
-[node name="KroganBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 10 )]
-position = Vector2( 755.132, 845.216 )
-charge_speed = 150
-dps = 3
-dpsCharge = 4
-HP = 60
-ShakeDuration = 3.0
-ShakeDeelay = 10.0
-ChargeDeelay = 5.0
+[node name="TurianBoss" parent="StageManager/EnemiesContainer" instance=ExtResource( 10 )]
+position = Vector2( 817, 867 )
+HP = 40
+shoot_delay = 3.0
 
 [node name="respawnPoint" type="Node2D" parent="StageManager"]
 position = Vector2( 1000, 1826 )
+
+[node name="impactZones" type="Node" parent="StageManager"]
+
+[node name="ImpactZone" parent="StageManager/impactZones" instance=ExtResource( 14 )]
+position = Vector2( 223, 850 )
+
+[node name="ImpactZone2" parent="StageManager/impactZones" instance=ExtResource( 14 )]
+position = Vector2( 64, 879 )
+
+[node name="ImpactZone3" parent="StageManager/impactZones" instance=ExtResource( 14 )]
+position = Vector2( 240, 909 )
+
+[node name="ImpactZone4" parent="StageManager/impactZones" instance=ExtResource( 14 )]
+position = Vector2( 126, 936 )
+
+[node name="ImpactZone5" parent="StageManager/impactZones" instance=ExtResource( 14 )]
+position = Vector2( 50, 990 )
+
+[node name="ImpactZone6" parent="StageManager/impactZones" instance=ExtResource( 14 )]
+position = Vector2( 266, 962 )
+
+[node name="ImpactZone7" parent="StageManager/impactZones" instance=ExtResource( 14 )]
+position = Vector2( 186, 996 )
+
+[node name="ImpactZone8" parent="StageManager/impactZones" instance=ExtResource( 14 )]
+position = Vector2( 320, 1002 )
+
+[node name="ImpactZone9" parent="StageManager/impactZones" instance=ExtResource( 14 )]
+position = Vector2( 106, 836 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -186,17 +155,17 @@ texture = ExtResource( 17 )
 [node name="Ceru1" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
 position = Vector2( 815, 140 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 13 )
+texture = ExtResource( 3 )
 
 [node name="Ceru2" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
 position = Vector2( 784, 140 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 13 )
+texture = ExtResource( 3 )
 
 [node name="Ceru3" type="Sprite" parent="GUI/UI/LifesList/Ceru"]
 position = Vector2( 752, 140 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 13 )
+texture = ExtResource( 3 )
 
 [node name="HealthPlayerContainer" type="Node2D" parent="GUI/UI"]
 script = ExtResource( 9 )
@@ -236,23 +205,23 @@ value = 10.0
 texture_progress = ExtResource( 26 )
 
 [node name="HealthBossContainer" type="Node2D" parent="GUI/UI"]
-position = Vector2( 1655.76, 989.869 )
+position = Vector2( 1944, 989.869 )
 script = ExtResource( 29 )
 
 [node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthBossContainer"]
-margin_left = -1164.0
-margin_top = -46.0
-margin_right = 107.0
-margin_bottom = 34.0
-max_value = 30.0
-value = 30.0
+margin_left = -947.0
+margin_top = -41.0
+margin_right = -111.0
+margin_bottom = 39.0
+max_value = 20.0
+value = 20.0
 texture_progress = ExtResource( 18 )
 nine_patch_stretch = true
 
 [node name="TheJaw" type="Sprite" parent="GUI/UI/HealthBossContainer"]
-position = Vector2( -529.26, -13.869 )
-scale = Vector2( 0.621825, 0.659794 )
-texture = ExtResource( 25 )
+position = Vector2( -524.5, 2.13095 )
+scale = Vector2( 0.557813, 0.548148 )
+texture = ExtResource( 13 )
 
 [node name="Rating" type="Control" parent="GUI/UI"]
 margin_left = 1764.0
@@ -261,6 +230,7 @@ margin_right = 1804.0
 margin_bottom = 994.0
 script = ExtResource( 31 )
 rate_list = [ ExtResource( 32 ), ExtResource( 34 ), ExtResource( 33 ), ExtResource( 35 ) ]
+boss = true
 rate_points = [ 1200, 2400, 3600, 4800 ]
 
 [node name="Sprite" type="Sprite" parent="GUI/UI/Rating"]
@@ -494,22 +464,23 @@ position = Vector2( 14915.3, 810.945 )
 shape = SubResource( 6 )
 
 [node name="floor" type="Node2D" parent="."]
-position = Vector2( -3186.7, 542 )
+position = Vector2( -3572, 542 )
 z_index = -2
 script = ExtResource( 11 )
-increment = 2720
+increment = 1350
 n_positions = 1
-scenes = [ ExtResource( 15 ), ExtResource( 14 ) ]
+scenes = [ ExtResource( 1 ) ]
 
 [node name="PlayersList" type="Node2D" parent="."]
+position = Vector2( -1531, 90 )
 
 [node name="Blasto" parent="PlayersList" instance=ExtResource( 6 )]
-position = Vector2( 25.4528, 1232.18 )
+position = Vector2( 25.4528, 1304 )
 scale = Vector2( 1, 1 )
 boss = true
 
 [node name="Ceru Star" parent="PlayersList" instance=ExtResource( 27 )]
-position = Vector2( 109, 1251 )
+position = Vector2( 109, 1322.82 )
 scale = Vector2( 1, 1 )
 isPlayerTwo = true
 boss = true
@@ -520,476 +491,8 @@ stream = ExtResource( 2 )
 bus = "Music"
 script = ExtResource( 8 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="background" type="Node" parent="ParallaxBackground"]
-
-[node name="desert1" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 1288, 360 )
-scale = Vector2( 1.3, 1.3 )
-texture = ExtResource( 3 )
-
-[node name="desert2" type="Sprite" parent="ParallaxBackground/background"]
-position = Vector2( 120, 352 )
-scale = Vector2( 1.3, 1.3 )
-texture = ExtResource( 3 )
-
-[node name="background2" type="Node" parent="ParallaxBackground"]
-
-[node name="pxArt" type="Sprite" parent="ParallaxBackground/background2"]
-position = Vector2( 368, 352 )
-scale = Vector2( 0.726563, 0.726563 )
-texture = ExtResource( 20 )
-
-[node name="pxArt2" type="Sprite" parent="ParallaxBackground/background2"]
-position = Vector2( 1104, 352 )
-scale = Vector2( 0.726563, 0.796875 )
-texture = ExtResource( 20 )
-
-[node name="pxArt3" type="Sprite" parent="ParallaxBackground/background2"]
-position = Vector2( 1848, 348 )
-scale = Vector2( 0.726563, 0.820313 )
-texture = ExtResource( 20 )
-flip_h = true
-
-[node name="obj" type="Node" parent="ParallaxBackground"]
-
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1368.43, 522.308 )
-scale = Vector2( 0.812395, 0.784622 )
-frames = SubResource( 39 )
-frame = 1
-playing = true
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 588.103, 50.5414 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 1
-playing = true
-
-[node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1644.18, 125.905 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 1
-playing = true
-
-[node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 294.987, 271.825 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 1
-playing = true
-
-[node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 564.379, 635.503 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 1
-playing = true
-
-[node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1799.08, 696.116 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 1
-playing = true
-
-[node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
-position = Vector2( 1022.34, 361.622 )
-scale = Vector2( 0.901329, 0.885789 )
-frames = SubResource( 39 )
-frame = 1
-playing = true
-
-[node name="obj" type="Node" parent="."]
-
-[node name="up" type="Node" parent="obj"]
-
-[node name="LV 1-D T-OBJ2" type="Sprite" parent="obj/up"]
-position = Vector2( 208, 824 )
-z_index = -2
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 1
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ2/StaticBody2D"]
-position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/up"]
-position = Vector2( 720, 824 )
-z_index = -2
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 12
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ3/StaticBody2D"]
-position = Vector2( -24.6178, -43.4524 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/up"]
-position = Vector2( 8064, 837 )
-z_index = -2
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 1
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ11"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ11/StaticBody2D"]
-position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/up"]
-position = Vector2( 8576, 837 )
-z_index = -2
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 12
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ12"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ12/StaticBody2D"]
-position = Vector2( -23.7074, -44.6754 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/up"]
-position = Vector2( 1616, 824 )
-z_index = -2
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 8
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ4/StaticBody2D"]
-position = Vector2( -2.02051, -41.7024 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/up"]
-position = Vector2( 2416, 824 )
-z_index = -2
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 10
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ5/StaticBody2D"]
-position = Vector2( -2.25, -41.7024 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ6" type="Sprite" parent="obj/up"]
-position = Vector2( 3568, 824 )
-z_index = -2
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 11
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ6/StaticBody2D"]
-position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ7" type="Sprite" parent="obj/up"]
-position = Vector2( 4376, 829 )
-z_index = -2
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 12
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ7/StaticBody2D"]
-position = Vector2( -23.29, -41.7024 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ8" type="Sprite" parent="obj/up"]
-position = Vector2( 5272, 829 )
-z_index = -2
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 8
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ8/StaticBody2D"]
-position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ9" type="Sprite" parent="obj/up"]
-position = Vector2( 6072, 829 )
-z_index = -2
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 10
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ9/StaticBody2D"]
-position = Vector2( -2.93799, -42.7797 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ10" type="Sprite" parent="obj/up"]
-position = Vector2( 7224, 829 )
-z_index = -2
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 11
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/up/LV 1-D T-OBJ10"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/up/LV 1-D T-OBJ10/StaticBody2D"]
-position = Vector2( 0.670486, -41.7024 )
-shape = SubResource( 40 )
-
-[node name="down" type="Node" parent="obj"]
-
-[node name="LV 1-D T-OBJ15" type="Sprite" parent="obj/down"]
-position = Vector2( 59.8328, 974.837 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 1
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ15"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ15/StaticBody2D"]
-position = Vector2( -0.390175, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ16" type="Sprite" parent="obj/down"]
-position = Vector2( 535.111, 971.868 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 9
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ16"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ16/StaticBody2D"]
-position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ3" type="Sprite" parent="obj/down"]
-position = Vector2( 1056, 977 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 3
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ3/StaticBody2D"]
-position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ4" type="Sprite" parent="obj/down"]
-position = Vector2( 1168, 976 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 4
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ4"]
-position = Vector2( -22.0486, 0 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ4/StaticBody2D"]
-position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ5" type="Sprite" parent="obj/down"]
-position = Vector2( 2134, 1066.51 )
-z_index = 3
-texture = ExtResource( 21 )
-offset = Vector2( 10, -90.51 )
-hframes = 3
-vframes = 5
-frame = 2
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ5"]
-position = Vector2( 13.4697, -91.4806 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ5/StaticBody2D"]
-position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ6" type="Sprite" parent="obj/down"]
-position = Vector2( 3160, 976 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 12
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ6/StaticBody2D"]
-position = Vector2( -25.4714, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ7" type="Sprite" parent="obj/down"]
-position = Vector2( 3952, 981 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 11
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ7/StaticBody2D"]
-position = Vector2( -0.545654, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ8" type="Sprite" parent="obj/down"]
-position = Vector2( 4312, 981 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 9
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ8/StaticBody2D"]
-position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ9" type="Sprite" parent="obj/down"]
-position = Vector2( 4952, 981 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 3
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ9/StaticBody2D"]
-position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ10" type="Sprite" parent="obj/down"]
-position = Vector2( 5064, 981 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 4
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ10"]
-position = Vector2( -15.0801, 0 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ10/StaticBody2D"]
-position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ11" type="Sprite" parent="obj/down"]
-position = Vector2( 6040, 981 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 2
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ11"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ11/StaticBody2D"]
-position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ13" type="Sprite" parent="obj/down"]
-position = Vector2( 7679.8, 977 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 9
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ13"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ13/StaticBody2D"]
-position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ14" type="Sprite" parent="obj/down"]
-position = Vector2( 8288, 968 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 2
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ14"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ14/StaticBody2D"]
-position = Vector2( -0.328857, -44.8843 )
-shape = SubResource( 40 )
-
-[node name="LV 1-D T-OBJ12" type="Sprite" parent="obj/down"]
-position = Vector2( 7056, 981 )
-z_index = 3
-texture = ExtResource( 21 )
-hframes = 3
-vframes = 5
-frame = 12
-script = ExtResource( 28 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="obj/down/LV 1-D T-OBJ12"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj/down/LV 1-D T-OBJ12/StaticBody2D"]
-position = Vector2( -24.9507, -44.8843 )
-shape = SubResource( 40 )
-
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 329, 1208 )
+position = Vector2( -1142, 1247 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_left = 0
@@ -1011,6 +514,325 @@ __meta__ = {
 script = ExtResource( 5 )
 boss = true
 randomShackeStrenght = 10.0
+
+[node name="Node" type="Node2D" parent="."]
+visible = false
+position = Vector2( -1626, 494 )
+
+[node name="Lv1-DObj2" type="Sprite" parent="Node"]
+position = Vector2( 431, 821 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj2/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj11" type="Sprite" parent="Node"]
+position = Vector2( 386, 784 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj11/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj6" type="Sprite" parent="Node"]
+position = Vector2( 431, 821 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj6/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj3" type="Sprite" parent="Node"]
+position = Vector2( 578, 809 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj3/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj4" type="Sprite" parent="Node"]
+position = Vector2( 635, 844 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj4/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj5" type="Sprite" parent="Node"]
+position = Vector2( 514, 832 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj5/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj7" type="Sprite" parent="Node"]
+position = Vector2( 553, 865 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj7/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj8" type="Sprite" parent="Node"]
+position = Vector2( 618, 885 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj8/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj9" type="Sprite" parent="Node"]
+position = Vector2( 402, 858 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj9/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj10" type="Sprite" parent="Node"]
+position = Vector2( 468, 879 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj10/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj22" type="Sprite" parent="Node"]
+position = Vector2( 411, 880 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj22"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj22/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj12" type="Sprite" parent="Node"]
+position = Vector2( 544, 909 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj12"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj12/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj13" type="Sprite" parent="Node"]
+position = Vector2( 666, 922 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj13"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj13/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj15" type="Sprite" parent="Node"]
+position = Vector2( 612, 930 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj15"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj15/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj16" type="Sprite" parent="Node"]
+position = Vector2( 674, 969 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj16"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj16/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj17" type="Sprite" parent="Node"]
+position = Vector2( 470, 935 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj17"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj17/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj18" type="Sprite" parent="Node"]
+position = Vector2( 542, 942 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj18"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj18/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj20" type="Sprite" parent="Node"]
+position = Vector2( 568, 977 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj20"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj20/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv1-DObj21" type="Sprite" parent="Node"]
+position = Vector2( 486, 981 )
+scale = Vector2( 0.71, 1 )
+z_index = -1
+texture = ExtResource( 21 )
+hframes = 3
+vframes = 5
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node/Lv1-DObj21"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Lv1-DObj21/StaticBody2D"]
+position = Vector2( 1.85715, 0.232544 )
+shape = SubResource( 43 )
+
+[node name="Lv2-SObj" type="Sprite" parent="."]
+position = Vector2( -910, 1359 )
+texture = ExtResource( 15 )
+hframes = 3
+vframes = 3
+frame = 5
+
+[node name="Lv2-SObj2" type="Sprite" parent="."]
+position = Vector2( -670, 1354 )
+z_index = -2
+texture = ExtResource( 15 )
+hframes = 3
+vframes = 3
+frame = 5
+
+[node name="Lv2-SObj3" type="Sprite" parent="."]
+position = Vector2( -776, 1389 )
+z_index = -1
+texture = ExtResource( 15 )
+hframes = 3
+vframes = 3
+frame = 5
+
+[node name="Lv2-SObj4" type="Sprite" parent="."]
+position = Vector2( -625, 1445 )
+texture = ExtResource( 15 )
+hframes = 3
+vframes = 3
+frame = 5
 
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Blasto/HealthBar" to="PlayersList/Blasto" method="_on_HealthBar_value_changed"]
 [connection signal="value_changed" from="GUI/UI/HealthPlayerContainer/Ceru/HealthBar" to="PlayersList/Ceru Star" method="_on_HealthBar_value_changed"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/img/frontground/lvl sea/tileset/lv1-a/LV1-A Back.png" type="Texture" id=1]
-[ext_resource path="res://assets/img/frontground/lvl sea/tileset/lv1-a/LV1-A Fore.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/frontground/lvl metro/tileset/lv1-m/LV1-M FORE.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/frontground/lvl metro/tileset/lv1-m/LV1-M BACK.png" type="Texture" id=2]
 [ext_resource path="res://assets/img/frontground/obj/LV1-D OBJ.png" type="Texture" id=3]
 [ext_resource path="res://assets/Scripts/Environment/DestroyObj.gd" type="Script" id=4]
 
@@ -20,59 +20,43 @@ extents = Vector2( 39.5481, 2.01658 )
 [node name="Node2D" type="Node2D"]
 position = Vector2( -40, -24 )
 
-[node name="LV1-D T-HRL" type="Sprite" parent="."]
-position = Vector2( 211, -159 )
+[node name="Lv1-SBack" type="Sprite" parent="."]
+position = Vector2( 236, -159 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Lv1-SBack2" type="Sprite" parent="."]
+position = Vector2( 627, -159 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 1
+
+[node name="Lv1-SBack3" type="Sprite" parent="."]
+position = Vector2( 1018, -159 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Lv1-SFore" type="Sprite" parent="."]
+position = Vector2( 324, 188 )
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="Lv1-SFore2" type="Sprite" parent="."]
+position = Vector2( 715, 188 )
 texture = ExtResource( 1 )
 hframes = 4
 frame = 1
 
-[node name="LV1-D T-HRL2" type="Sprite" parent="."]
-position = Vector2( 552, -159 )
+[node name="Lv1-SFore3" type="Sprite" parent="."]
+position = Vector2( 1106, 188 )
 texture = ExtResource( 1 )
 hframes = 4
 frame = 2
-
-[node name="LV1-D T-HRL3" type="Sprite" parent="."]
-position = Vector2( 893, -159 )
-texture = ExtResource( 1 )
-hframes = 4
-frame = 3
-
-[node name="LV1-D T-HRL4" type="Sprite" parent="."]
-position = Vector2( 1234, -159 )
-texture = ExtResource( 1 )
-hframes = 4
-frame = 2
-
-[node name="LV1-D T-STR" type="Sprite" parent="."]
-position = Vector2( 298, 113 )
-texture = ExtResource( 2 )
-hframes = 5
-frame = 1
-
-[node name="LV1-D T-STR2" type="Sprite" parent="."]
-position = Vector2( 639, 113 )
-texture = ExtResource( 2 )
-hframes = 5
-frame = 2
-
-[node name="LV1-D T-STR3" type="Sprite" parent="."]
-position = Vector2( 980, 113 )
-texture = ExtResource( 2 )
-hframes = 5
-frame = 3
-
-[node name="LV1-D T-STR4" type="Sprite" parent="."]
-position = Vector2( 1321, 113 )
-texture = ExtResource( 2 )
-hframes = 5
-frame = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="LV 1-D T-OBJ2" type="Sprite" parent="Node2D"]
-position = Vector2( 418.167, 146 )
-z_index = 3
+position = Vector2( 418.167, 7 )
 texture = ExtResource( 3 )
 hframes = 3
 vframes = 5
@@ -86,8 +70,7 @@ position = Vector2( 0.670486, -41.7024 )
 shape = SubResource( 1 )
 
 [node name="LV 1-D T-OBJ3" type="Sprite" parent="Node2D"]
-position = Vector2( 930.167, 146 )
-z_index = 3
+position = Vector2( 930.167, 7 )
 texture = ExtResource( 3 )
 hframes = 3
 vframes = 5
@@ -101,7 +84,8 @@ position = Vector2( -24.6178, -43.4524 )
 shape = SubResource( 1 )
 
 [node name="LV 1-D T-OBJ15" type="Sprite" parent="Node2D"]
-position = Vector2( 270, 3 )
+position = Vector2( 270, 157.837 )
+z_index = 3
 texture = ExtResource( 3 )
 hframes = 3
 vframes = 5
@@ -115,7 +99,8 @@ position = Vector2( -0.390175, -44.8843 )
 shape = SubResource( 1 )
 
 [node name="LV 1-D T-OBJ16" type="Sprite" parent="Node2D"]
-position = Vector2( 826, 4 )
+position = Vector2( 745.278, 154.868 )
+z_index = 3
 texture = ExtResource( 3 )
 hframes = 3
 vframes = 5
@@ -129,7 +114,8 @@ position = Vector2( -0.778198, -45.3844 )
 shape = SubResource( 2 )
 
 [node name="LV 1-D T-OBJ4" type="Sprite" parent="Node2D"]
-position = Vector2( 1161, 4 )
+position = Vector2( 1161, 156 )
+z_index = 3
 texture = ExtResource( 3 )
 hframes = 3
 vframes = 5
@@ -143,7 +129,8 @@ position = Vector2( 4.5, -46 )
 shape = SubResource( 3 )
 
 [node name="LV 1-D T-OBJ5" type="Sprite" parent="Node2D"]
-position = Vector2( 1273, 3 )
+position = Vector2( 1273, 155 )
+z_index = 3
 texture = ExtResource( 3 )
 hframes = 3
 vframes = 5
