@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/video/defeat gun.ogv" type="VideoStream" id=1]
+[ext_resource path="res://assets/video/defeat leg.ogv" type="VideoStream" id=1]
 [ext_resource path="res://assets/Scripts/Managers/audioProloguer.gd" type="Script" id=2]
 [ext_resource path="res://assets/Scripts/Managers/cutscene.gd" type="Script" id=3]
 [ext_resource path="res://assets/audio/ost/prologue.ogg" type="AudioStream" id=4]
