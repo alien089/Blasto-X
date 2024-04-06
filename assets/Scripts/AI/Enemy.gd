@@ -192,7 +192,10 @@ func pause():
 
 func attack():
 	if near_player:
-		actual_target.hit(dps, "melee", self)
+		for area in collition_area2d.get_overlapping_areas():
+			if area.owner.is_in_group("player"):
+				actual_target.hit(dps, "melee", self)
+			
 	
 
 func death():

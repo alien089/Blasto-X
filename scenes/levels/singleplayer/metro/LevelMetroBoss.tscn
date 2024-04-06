@@ -129,9 +129,15 @@ asariBoss2Alone = ExtResource( 11 )
 
 [node name="asariBoss1" parent="StageManager/EnemiesContainer" instance=ExtResource( 20 )]
 position = Vector2( 805, 797 )
+sprint_speed = 400
+fall_speed = 600.0
+wait_time_attack = 1
 
 [node name="asariBoss2" parent="StageManager/EnemiesContainer" instance=ExtResource( 22 )]
 position = Vector2( 700, 862 )
+sprint_speed = 400
+fall_speed = 600.0
+wait_time_attack = 1
 
 [node name="respawnPoint" type="Node2D" parent="StageManager"]
 position = Vector2( 791, 1852 )

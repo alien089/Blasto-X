@@ -10,6 +10,7 @@ onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var collision_shape : CollisionShape2D = $Pivot/HitBox/CollisionShape2D
 onready var collision_shape_body : CollisionShape2D = $CollisionShape2D
 onready var collition_area2d : CollisionShape2D = $Pivot/AttackCollision/CollisionShape2D
+onready var attack_area2d : Area2D = $Pivot/AttackCollision
 onready var jump_position2D : Position2D = $JumpPosition
 onready var UIHealthBar: Node2D = $UI/HealthContainer
 
@@ -216,7 +217,7 @@ func _process(_delta: float) -> void:
 
 			STATE.ATTACK:
 				#se il player è vicino e non in stato già di hitted, attacco
-				if near_player && !actual_target.invincible:
+				if near_player:
 					anim_player.play("attack")
 				
 				near_player = false # disattivo per evitare doppio attacco, il resto è gestito in  _on_AttackCollision_area_entered
@@ -297,8 +298,13 @@ func flip_sprite(target: Vector2):
 
 
 func attack():
-	actual_target.hit(actual_dps, "melee", self)
-
+	if current_state == STATE.ATTACK:
+		for area in attack_area2d.get_overlapping_areas():
+			if area.owner.is_in_group("player"):
+				actual_target.hit(actual_dps, "melee", self)
+	else:
+		actual_target.hit(actual_dps, "melee", self)
+	
 
 func death():
 	queue_free()
