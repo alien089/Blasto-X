@@ -102,3 +102,13 @@ func eventDeath(p):
 func respawn(p):
 	var tmp = Vector2(respawnPoint.global_position.x, p.global_position.y)
 	p.global_position = tmp
+
+func refill_bosses():
+	bosses.clear()
+
+	var tmp = bossParent.get_child_count()
+
+	bosses.append(bossParent.get_child(bossParent.get_child_count() - 1))
+
+	for boss in bosses:
+		boss.targetList = players

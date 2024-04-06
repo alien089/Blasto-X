@@ -48,6 +48,7 @@ var jumpPos: Vector2
 
 var rng
 
+var last_state
 
 var didLandingAtk: bool = false
 var canLand: bool = false
@@ -88,6 +89,8 @@ func _process(_delta: float) -> void:
 					oneTime = true
 				
 				global_position += movement
+
+				last_state = current_state
 				
 				if global_position >= directionPlayer && direction > Vector2(0, 0) || global_position <= directionPlayer && direction < Vector2(0, 0):
 					emit_signal("attackDone")
@@ -98,6 +101,10 @@ func _process(_delta: float) -> void:
 			STATE.HIT:
 				anim_player.play("hit")
 				emit_signal("didSprintAttack")
+
+				if last_state == STATE.SPRINT:
+					emit_signal("attackDone")
+					emit_signal("didSprintAttack")
 
 			STATE.ATTACK:
 				if near_player:
@@ -121,6 +128,8 @@ func _process(_delta: float) -> void:
 				if sprite.frame == 8:
 					move_towards(targetPos, jump_speed)
 
+				last_state = current_state
+				
 				if global_position <= targetPos:
 					oneTime = false
 					current_state = STATE.FLOATING
@@ -138,6 +147,8 @@ func _process(_delta: float) -> void:
 					global_position = Vector2(actual_target.global_position.x, global_position.y)
 					
 				move_towards(targetPos, fall_speed)
+
+				last_state = current_state
 
 				if global_position >= targetPos:
 					$Pivot/AttackCollision/CollisionShape2D.disabled = true
