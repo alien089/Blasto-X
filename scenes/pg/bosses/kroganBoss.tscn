@@ -1,14 +1,15 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/img/sprites/enemy/bosses/the_jaw_spritesheet.png" type="Texture" id=1]
-[ext_resource path="res://assets/audio/sfx/Bosses/TheJaw_SFX/Boss_Krogan_Colpito02.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheJaw_SFX/boss_krogan_hit_01.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/Scripts/AI/kroganBoss.gd" type="Script" id=3]
-[ext_resource path="res://assets/audio/sfx/Bosses/TheJaw_SFX/Boss_Krogan_AttaccoBase.mp3" type="AudioStream" id=4]
-[ext_resource path="res://assets/audio/sfx/Bosses/TheJaw_SFX/Boss_Krogan_AttaccoTerremoto.mp3" type="AudioStream" id=5]
-[ext_resource path="res://assets/audio/sfx/Bosses/TheJaw_SFX/Boss_Krogan_AttaccoCarica.mp3" type="AudioStream" id=6]
-[ext_resource path="res://assets/audio/sfx/Bosses/TheJaw_SFX/Boss_Krogan_Morte.mp3" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheJaw_SFX/boss_krogan_attack.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheJaw_SFX/boss_krogan_attack_earthquake.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheJaw_SFX/boss_krogan_attack_charge.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheJaw_SFX/boss_krogan_death.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/img/sprites/VFX/dustCloudVFX.png" type="Texture" id=8]
 [ext_resource path="res://assets/img/sprites/VFX/enemyMeleeHittedVFX.png" type="Texture" id=9]
+
 
 
 [sub_resource type="Animation" id=10]

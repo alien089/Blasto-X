@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/img/frontground/lvl metro/tileset/lv3-m/LV3-M Back.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/frontground/lvl metro/tileset/lv3-m/LV3-M Fore.png" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( -40, -24 )
+
+[node name="Lv1-SBack" type="Sprite" parent="."]
+position = Vector2( 236, -159 )
+texture = ExtResource( 1 )
+hframes = 7
+frame = 3
+
+[node name="Lv1-SBack2" type="Sprite" parent="."]
+position = Vector2( 627, -159 )
+texture = ExtResource( 1 )
+hframes = 7
+frame = 4
+
+[node name="Lv1-SBack3" type="Sprite" parent="."]
+position = Vector2( 1018, -159 )
+texture = ExtResource( 1 )
+hframes = 7
+frame = 1
+
+[node name="Lv1-SFore" type="Sprite" parent="."]
+position = Vector2( 324, 112 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 2
+
+[node name="Lv1-SFore2" type="Sprite" parent="."]
+position = Vector2( 715, 112 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 2
+
+[node name="Lv1-SBack4" type="Sprite" parent="."]
+position = Vector2( 1409, -159 )
+texture = ExtResource( 1 )
+hframes = 7
+frame = 3
+
+[node name="Lv1-SFore4" type="Sprite" parent="."]
+position = Vector2( 1496, 112 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="Lv1-SFore3" type="Sprite" parent="."]
+position = Vector2( 1106, 112 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 2

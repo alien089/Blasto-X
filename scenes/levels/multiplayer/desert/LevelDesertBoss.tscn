@@ -240,18 +240,18 @@ position = Vector2( 1655.76, 989.869 )
 script = ExtResource( 29 )
 
 [node name="HealthBar" type="TextureProgress" parent="GUI/UI/HealthBossContainer"]
-margin_left = -1292.0
+margin_left = -1164.0
 margin_top = -46.0
 margin_right = 107.0
 margin_bottom = 34.0
-max_value = 60.0
-value = 60.0
+max_value = 30.0
+value = 30.0
 texture_progress = ExtResource( 18 )
 nine_patch_stretch = true
 
 [node name="TheJaw" type="Sprite" parent="GUI/UI/HealthBossContainer"]
-position = Vector2( -596.26, -13.869 )
-scale = Vector2( 0.682936, 0.659794 )
+position = Vector2( -529.26, -13.869 )
+scale = Vector2( 0.621825, 0.659794 )
 texture = ExtResource( 25 )
 
 [node name="Rating" type="Control" parent="GUI/UI"]
@@ -558,49 +558,49 @@ flip_h = true
 position = Vector2( 1368.43, 522.308 )
 scale = Vector2( 0.812395, 0.784622 )
 frames = SubResource( 39 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 588.103, 50.5414 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1644.18, 125.905 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 294.987, 271.825 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 564.379, 635.503 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1799.08, 696.116 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="ParallaxBackground/obj"]
 position = Vector2( 1022.34, 361.622 )
 scale = Vector2( 0.901329, 0.885789 )
 frames = SubResource( 39 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="obj" type="Node" parent="."]

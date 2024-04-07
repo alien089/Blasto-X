@@ -50,7 +50,7 @@ func _on_AnimationPlayer_animation_finished(anim_name:String):
 func _on_Area2D_area_entered(area:Area2D):
 	if area.is_in_group("granade") && anim_player.current_animation == "explosion":
 		var player = area.owner
-		player.hit(damage, self)
+		player.hit(damage, "melee", self)
 		custom_queue_free()
 
 

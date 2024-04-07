@@ -1,11 +1,12 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/audio/sfx/Bosses/TheVine_SFX/Boss_Salarian_Liana_Growth.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheVine_SFX/boss_salarian_liana_growth.ogg" type="AudioStream" id=1]
 [ext_resource path="res://assets/Scripts/AI/props/TheVine/Vine Gun.gd" type="Script" id=2]
-[ext_resource path="res://assets/audio/sfx/Bosses/TheVine_SFX/Boss_Salarian_Liana_Shoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheVine_SFX/boss_salarian_liana_shoot.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/img/sprites/enemy/bosses/obj/the vine/liana_up.png" type="Texture" id=4]
 [ext_resource path="res://scenes/pg/bosses/props/TheVine/Bullet Vine.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/audio/sfx/Bosses/TheVine_SFX/Boss_Salarian_Bloom.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheVine_SFX/boss_salarian_bloom.ogg" type="AudioStream" id=6]
+
 
 
 [sub_resource type="Animation" id=5]

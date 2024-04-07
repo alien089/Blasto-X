@@ -3,12 +3,11 @@
 [ext_resource path="res://assets/img/sprites/enemy/Krogan_spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://assets/Scripts/UI/HealthDisplay.gd" type="Script" id=2]
 [ext_resource path="res://assets/Scripts/AI/Enemy.gd" type="Script" id=3]
-[ext_resource path="res://assets/audio/sfx/Enemies/Krogan_SFX/Krogan_Morte.mp3" type="AudioStream" id=4]
-[ext_resource path="res://assets/audio/sfx/Enemies/Krogan_SFX/Krogan_Attacco.mp3" type="AudioStream" id=5]
-[ext_resource path="res://assets/audio/sfx/Enemies/Krogan_SFX/Krogan_Colpito.mp3" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/Enemies/Krogan_SFX/krogan_death.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx/Enemies/Krogan_SFX/krogan_attack.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sfx/Enemies/Krogan_SFX/krogan_hit_01.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/img/sprites/VFX/enemyMeleeHittedVFX.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/sprites/VFX/dustCloudVFX.png" type="Texture" id=8]
-
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -212,7 +211,6 @@ scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 5
-frame = 11
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -240,7 +238,6 @@ anims/idle = SubResource( 4 )
 anims/move = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -2, 0 )
 shape = SubResource( 11 )
 
@@ -250,7 +247,6 @@ wait_time = 0.15
 [node name="CooldownTimer" type="Timer" parent="."]
 
 [node name="Pivot" type="Node2D" parent="."]
-visible = false
 
 [node name="AttackCollision" type="Area2D" parent="Pivot"]
 collision_layer = 2
@@ -262,7 +258,6 @@ scale = Vector2( 0.600001, 1 )
 shape = SubResource( 8 )
 
 [node name="HitBox" type="Area2D" parent="Pivot"]
-visible = false
 position = Vector2( -9, -1 )
 monitoring = false
 

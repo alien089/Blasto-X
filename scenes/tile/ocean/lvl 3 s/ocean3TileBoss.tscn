@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/img/frontground/lvl sea/tileset/lv3-a/LV3-A Back.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/frontground/lvl sea/tileset/lv3-a/LV3-A Fore.png" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( -40, -24 )
+
+[node name="LV1-D T-HRL" type="Sprite" parent="."]
+position = Vector2( 211, -160 )
+texture = ExtResource( 1 )
+hframes = 5
+frame = 3
+
+[node name="LV1-D T-HRL2" type="Sprite" parent="."]
+position = Vector2( 552, -160 )
+texture = ExtResource( 1 )
+hframes = 5
+frame = 4
+
+[node name="LV1-D T-HRL3" type="Sprite" parent="."]
+position = Vector2( 893, -160 )
+texture = ExtResource( 1 )
+hframes = 5
+frame = 1
+
+[node name="LV1-D T-HRL4" type="Sprite" parent="."]
+position = Vector2( 1234, -160 )
+texture = ExtResource( 1 )
+hframes = 5
+frame = 3
+
+[node name="LV1-D T-STR" type="Sprite" parent="."]
+position = Vector2( 298, 112 )
+texture = ExtResource( 2 )
+hframes = 5
+frame = 2
+
+[node name="LV1-D T-STR2" type="Sprite" parent="."]
+position = Vector2( 639, 112 )
+texture = ExtResource( 2 )
+hframes = 5
+frame = 3
+
+[node name="LV1-D T-STR3" type="Sprite" parent="."]
+position = Vector2( 980, 112 )
+texture = ExtResource( 2 )
+hframes = 5
+frame = 2
+
+[node name="LV1-D T-STR4" type="Sprite" parent="."]
+position = Vector2( 1321, 112 )
+texture = ExtResource( 2 )
+hframes = 5
+frame = 2

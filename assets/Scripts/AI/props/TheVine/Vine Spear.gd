@@ -24,5 +24,5 @@ func _process(_delta):
 	
 
 func _on_HitBox_body_entered(body:Node):
-	(body as Player).hit(dps, self)
+	(body as Player).hit(dps, "spear", self)
 	queue_free()

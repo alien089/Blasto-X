@@ -4,6 +4,11 @@ export var firstTab = ""
 
 onready var miscMenu: Control = get_parent().get_node("MiscMenu")
 
+func _process(delta):
+	if Input.is_action_pressed("ksSecret"):
+		$MultiBtn.visible = true
+		pass
+
 func _on_SingleBtn_pressed():
 	Global.isMultiplayer = false
 	get_tree().change_scene("res://scenes/cutscenes/" + firstTab + ".tscn")

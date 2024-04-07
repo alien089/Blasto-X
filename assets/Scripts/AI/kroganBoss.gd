@@ -125,7 +125,7 @@ func _process(_delta: float) -> void:
 			STATE.CHARGE_END:
 				if (areaCollided != null):
 					if (areaCollided.owner.is_in_group("player")):
-						actual_target.hit(dpsCharge, self)
+						actual_target.hit(dpsCharge, "melee", self)
 				if anim_player.current_animation != "ChargeEnd":
 					#timerShake.set_paused(false)
 					areaCollided = null
@@ -228,7 +228,7 @@ func move_towards(target: Vector2, speed):
 	
 
 func attack():
-	actual_target.hit(dps, self)
+	actual_target.hit(dps, "melee", self)
 	
 
 func death():

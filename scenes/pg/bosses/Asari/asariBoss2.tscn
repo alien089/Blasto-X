@@ -1,0 +1,395 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://assets/img/sprites/enemy/bosses/the_leg_2_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheLeg_SFX/boss_asari_hit_01.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/Scripts/AI/asariBoss.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheLeg_SFX/boss_asari_death_01.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/img/UI/bosses/the leg/barra vita the leg 2.png" type="Texture" id=5]
+[ext_resource path="res://assets/Scripts/UI/HealthDisplay.gd" type="Script" id=6]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheLeg_SFX/boss_asari_kick.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/img/sprites/VFX/dustCloudVFX.png" type="Texture" id=8]
+[ext_resource path="res://assets/img/sprites/VFX/enemyMeleeHittedVFX.png" type="Texture" id=9]
+[ext_resource path="res://assets/img/UI/bosses/the leg/cornice the leg rossa.png" type="Texture" id=10]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheLeg_SFX/boss_asari_jumping.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheLeg_SFX/boss_asari_sprint.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/sfx/Bosses/TheLeg_SFX/boss_asari_falling.ogg" type="AudioStream" id=13]
+
+[sub_resource type="Animation" id=17]
+resource_name = "Falling"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 7, 6 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("SFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 13 )
+} ],
+"times": PoolRealArray( 0.4 )
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "Jump"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("SFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "Sprint"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 10, 11 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("SFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("SFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 0.4 )
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "died"
+length = 1.2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 16, 17 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "death"
+} ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("SFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=22]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 13 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("SFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0576171,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=23]
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=15]
+radius = 17.0
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 8.4275, 21.8633 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 49.0033, 7.5 )
+
+[sub_resource type="CapsuleShape2D" id=16]
+radius = 8.99992
+height = 46.0
+
+[node name="asariBoss" type="KinematicBody2D" groups=["enemy", "pausable"]]
+z_index = -1
+collision_layer = 4
+collision_mask = 5
+script = ExtResource( 3 )
+dpsSprint = 2
+dpsLanding = 3
+HP = 10
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, -3 )
+scale = Vector2( 1.4, 1.4 )
+texture = ExtResource( 1 )
+flip_h = true
+hframes = 3
+vframes = 6
+frame = 8
+region_rect = Rect2( 9, 14, 63, 96 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="meleeHittedVFX" type="Sprite" parent="Node2D"]
+visible = false
+position = Vector2( -2.64833, -7.35167 )
+scale = Vector2( 0.22974, 0.22974 )
+texture = ExtResource( 9 )
+hframes = 2
+frame = 1
+
+[node name="dustCloudVFX" type="Sprite" parent="Node2D"]
+visible = false
+position = Vector2( 15, 60 )
+scale = Vector2( 0.809896, 1 )
+texture = ExtResource( 8 )
+hframes = 5
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Falling = SubResource( 17 )
+anims/Jump = SubResource( 18 )
+anims/Sprint = SubResource( 19 )
+anims/attack = SubResource( 20 )
+anims/died = SubResource( 21 )
+anims/hit = SubResource( 22 )
+anims/idle = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 15 )
+
+[node name="Pivot" type="Node2D" parent="."]
+scale = Vector2( -1, 1 )
+
+[node name="HitBox" type="Area2D" parent="Pivot"]
+position = Vector2( -9, 0 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/HitBox"]
+shape = SubResource( 14 )
+
+[node name="AttackCollision" type="Area2D" parent="Pivot"]
+position = Vector2( 12.3744, 0 )
+collision_layer = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/AttackCollision"]
+position = Vector2( 39.0276, -1.5 )
+scale = Vector2( 0.600001, 1 )
+shape = SubResource( 8 )
+
+[node name="FallCollision" type="Area2D" parent="Pivot"]
+position = Vector2( 1, 13 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/FallCollision"]
+rotation = 1.5708
+shape = SubResource( 16 )
+
+[node name="HealthDisplay" type="Node2D" parent="."]
+
+[node name="HealthBar" type="TextureProgress" parent="HealthDisplay"]
+margin_right = 40.0
+margin_bottom = 40.0
+max_value = 3.0
+value = 3.0
+
+[node name="Label" type="Label" parent="HealthDisplay"]
+visible = false
+margin_left = -20.1815
+margin_top = -77.7829
+margin_right = 19.8185
+margin_bottom = -63.7829
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+bus = "SFX"
+
+[node name="JumpPosition" type="Position2D" parent="."]
+position = Vector2( 0, -535 )
+
+[node name="IdleWait" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HealthContainer" type="Node2D" parent="UI"]
+position = Vector2( 1424, 970 )
+script = ExtResource( 6 )
+
+[node name="HealthBar" type="TextureProgress" parent="UI/HealthContainer"]
+margin_left = -801.0
+margin_top = -4.0
+margin_right = -221.0
+margin_bottom = 55.0
+max_value = 10.0
+value = 10.0
+texture_progress = ExtResource( 5 )
+nine_patch_stretch = true
+
+[node name="TheLeg2" type="Sprite" parent="UI/HealthContainer"]
+position = Vector2( -511, 20 )
+scale = Vector2( 0.383589, 0.343705 )
+texture = ExtResource( 10 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="area_entered" from="Pivot/HitBox" to="." method="_on_HitBox_area_entered"]
+[connection signal="area_entered" from="Pivot/AttackCollision" to="." method="_on_AttackCollision_area_entered"]
+[connection signal="area_entered" from="Pivot/FallCollision" to="." method="_on_FallCollision_area_entered"]
+[connection signal="timeout" from="IdleWait" to="." method="_on_IdleWait_timeout"]

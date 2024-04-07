@@ -198,7 +198,7 @@ func move_towards(target: Vector2, speed):
 	
 
 func attack():
-	actual_target.hit(dps, self)
+	actual_target.hit(dps, "melee", self)
 	
 
 func death():

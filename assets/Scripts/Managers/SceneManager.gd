@@ -1,11 +1,15 @@
 extends Node
 
+signal fading
+
 export var n_positions = 5
 export(Array, PackedScene) var enemy_types
 export(int) var current_stage := 0
 export var next_stage = ""
 export var current_level = ""
 export var totalFightPhases = 2
+export(bool) var horizonal_vertical = false
+export(int) var heightLevel = 0
 
 onready var camera : Camera2D = get_parent().get_node("Camera2D")
 onready var wall: StaticBody2D = $MovingWall
@@ -33,10 +37,15 @@ var menuShowed = false
 var players
 var actualCamera
 
+var right_left = false
+var previous_limit
+var firstTime = true
+
 func _ready() -> void:
 	positions = $Positions.get_children()
-	_select_stage(current_stage)
 	players = playersParent.get_children()
+
+	_select_stage(current_stage)
 	randomize()	
 
 func _process(_delta: float) -> void:
@@ -50,8 +59,12 @@ func _process(_delta: float) -> void:
 		checkPlayersDeep()
 
 	for player in players:
-		if player.global_position.x > wall.global_position.x - 750 && spawned == false && ActualFightPhase <= totalFightPhases - 1 && current_stage != positions.size() - 1:
-			_enemy_spawn(current_stage, ActualFightPhase)
+		if right_left:
+			if player.global_position.x > wall.global_position.x - 750 && spawned == false && ActualFightPhase <= totalFightPhases - 1 && current_stage != positions.size() - 1:
+				_enemy_spawn(current_stage, ActualFightPhase)
+		else:
+			if player.global_position.x < wall.global_position.x + 750 && spawned == false && ActualFightPhase <= totalFightPhases - 1 && current_stage != positions.size() - 1:
+				_enemy_spawn(current_stage, ActualFightPhase)
 		
 	var t = $EnemiesContainer.get_child_count()
 	if $EnemiesContainer.get_child_count() == 0 && spawned == true && ActualFightPhase == totalFightPhases - 1:
@@ -92,6 +105,8 @@ func _process(_delta: float) -> void:
 	
 
 func _select_stage(number):
+	right_left = !right_left
+
 	if positions.size() - 1 == number: 
 		ScoreFolder.visible = true
 		showedPoints.visible = false
@@ -104,9 +119,24 @@ func _select_stage(number):
 			
 		
 	else:
-		camera.limit_right = (positions[number + 1] as Position2D).global_position.x
-		
-		wall.global_position = (positions[number + 1] as Position2D).global_position
+		if !horizonal_vertical:
+			camera.limit_right = (positions[number + 1] as Position2D).global_position.x
+			
+			wall.global_position = (positions[number + 1] as Position2D).global_position
+		else:
+			if right_left:
+				camera.limit_right = (positions[number + 1] as Position2D).global_position.x
+				camera.limit_left = players[0].global_position.x - 100
+			else:
+				camera.limit_left = (positions[number + 1] as Position2D).global_position.x
+				camera.limit_right = players[0].global_position.x + 100
+			
+			if !firstTime:
+				emit_signal("fading")
+			else:
+				firstTime = false
+
+			wall.global_position = (positions[number + 1] as Position2D).global_position
 		
 	
 
@@ -142,6 +172,13 @@ func checkPlayersDeep():
 		players[0].z_index = 0
 		players[1].z_index = 1
 
+func transition():
+	for player in players:
+		player.global_position.y = player.global_position.y + heightLevel
+	
+	camera.global_position = players[0].global_position
+	camera.limit_bottom = camera.limit_bottom + heightLevel
+
 func _on_Blasto_death(p) -> void:
 	eventDeath(p)
 	
@@ -169,5 +206,15 @@ func eventDeath(p):
 
 
 func respawn(p):
-	var respawnPoint = Vector2(wall.global_position.x - 750, p.global_position.y)
+	var respawnPoint
+
+	if right_left:
+		respawnPoint = Vector2(wall.global_position.x - 750, p.global_position.y)
+	else:
+		respawnPoint = Vector2(wall.global_position.x + 750, p.global_position.y)
+		
 	p.global_position = respawnPoint
+
+
+func _on_FadingSystem_black_screen():
+	transition()

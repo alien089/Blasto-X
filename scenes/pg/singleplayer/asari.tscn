@@ -3,9 +3,9 @@
 [ext_resource path="res://assets/img/sprites/enemy/Asari_spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://assets/Scripts/UI/HealthDisplay.gd" type="Script" id=2]
 [ext_resource path="res://assets/Scripts/AI/Enemy.gd" type="Script" id=3]
-[ext_resource path="res://assets/audio/sfx/Enemies/Asari_SFX/Asari_Attacco.mp3" type="AudioStream" id=4]
-[ext_resource path="res://assets/audio/sfx/Enemies/Asari_SFX/Asari_Colpita.mp3" type="AudioStream" id=5]
-[ext_resource path="res://assets/audio/sfx/Enemies/Asari_SFX/Asari_Morte.mp3" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/Enemies/Asari_SFX/asari_attack.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx/Enemies/Asari_SFX/asari_hit.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sfx/Enemies/Asari_SFX/asari_death.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/img/sprites/VFX/dustCloudVFX.png" type="Texture" id=7]
 [ext_resource path="res://assets/img/sprites/VFX/enemyMeleeHittedVFX.png" type="Texture" id=8]
 
@@ -210,7 +210,6 @@ scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 vframes = 5
-frame = 11
 region_rect = Rect2( 9, 14, 63, 96 )
 
 [node name="Node2D" type="Node2D" parent="."]
