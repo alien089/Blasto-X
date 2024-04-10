@@ -23,8 +23,9 @@ var isMultiplayer = false
 
 func _ready():
 	players = playersParent.get_children()
-	for i in bossParent.get_child_count() - 1:
-		bosses.append(bossParent.get_child(i))
+	for i in bossParent.get_child_count():
+		if i != 2:
+			bosses.append(bossParent.get_child(i))
 
 	if playersParent.get_child_count() == 2:
 		isMultiplayer = true
