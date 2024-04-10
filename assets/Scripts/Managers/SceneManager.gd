@@ -208,10 +208,13 @@ func eventDeath(p):
 func respawn(p):
 	var respawnPoint
 
-	if right_left:
+	if !horizonal_vertical:
 		respawnPoint = Vector2(wall.global_position.x - 750, p.global_position.y)
 	else:
-		respawnPoint = Vector2(wall.global_position.x + 750, p.global_position.y)
+		if right_left:
+			respawnPoint = Vector2(wall.global_position.x - 750, p.global_position.y)
+		else:
+			respawnPoint = Vector2(wall.global_position.x + 750, p.global_position.y)
 		
 	p.global_position = respawnPoint
 
